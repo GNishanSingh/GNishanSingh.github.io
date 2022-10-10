@@ -57,7 +57,7 @@ $(function() {
                     format: d3.time.format("%Y"),
                     tickSize: 13
                 })
-                chart.margin({left:150, right:30, top:0, bottom:0})
+                chart.margin({left:180, right:30, top:0, bottom:0})
                 chart.beginning(1370875320000)
                 chart.ending(1665326520000)
                 chart.mouseover(function (d, i, datum) {
