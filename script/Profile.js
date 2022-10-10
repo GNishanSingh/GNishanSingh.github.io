@@ -31,9 +31,9 @@ $(function() {
         },
         experience: function(){
             this.echo(`
-<p></p>
-<p></p>
 <div class="column">
+    <p></p>
+    <p></p>
     <div class="row" id="timeline"></div>
     <div class="row" id="tooltip"></div>
     <div class="row" id="experience"></div>
