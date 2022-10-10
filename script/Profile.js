@@ -30,17 +30,26 @@ $(function() {
             `);
         },
         experience: function(){
-            this.echo('<p></p><p></p><div width="100%" id="timeline"></div>',{raw: true})
+            this.echo(`
+<p></p>
+<p></p>
+<div class="column">
+    <div class="row" id="timeline"></div>
+    <div class="row" id="tooltip"></div>
+    <div class="row" id="experience"></div>
+</div>
+            
+            `,{raw: true})
             var width = 1000;
             var testData =[
-                {label: "Securonix India PVT LTD", fruit: "orange", times: [
+                {label: "Securonix India PVT LTD", times: [
                   {"starting_time": 1637419320000, "ending_time": 1665326520000}]},
-                {label: "Netsurion Technologies PVT LTD", fruit: "apple", times: [
+                {label: "Netsurion Technologies PVT LTD", times: [
                   {"starting_time": 1433947320000, "ending_time": 1637419320000}
                 ]},
-                {label: "Axon Network Solution PVT LTD", fruit: "lemon", times: [
+                {label: "Axon Network Solution PVT LTD", times: [
                   {"starting_time": 1384094520000, "ending_time": 1433947320000}]},
-                {label: "IT Support Desk Limited", fruit: "lemon", times: [
+                {label: "IT Support Desk Limited", times: [
                     {"starting_time": 1370875320000, "ending_time": 1384094520000}]}
                 ];
                 var chart = d3.timeline().showAxisTop().stack();
@@ -51,6 +60,74 @@ $(function() {
                 chart.margin({left:150, right:30, top:0, bottom:0})
                 chart.beginning(1370875320000)
                 chart.ending(1665326520000)
+                chart.mouseover(function (d, i, datum) {
+                    // d is the current rendering object
+                    // i is the index during d3 rendering
+                    // datum is the data object
+                    document.getElementById("tooltip").innerHTML = ""
+                    document.getElementById("tooltip").innerHTML = "Please click on it for getting more details about my experience in '"+datum['label']+"'"
+                });
+                chart.mouseout(function(d, i, datum){
+                    document.getElementById("tooltip").innerHTML = ""
+                }
+                );
+                chart.click(function (d, i, datum) {
+                    // d is the current rendering object
+                    // i is the index during d3 rendering
+                    // datum is the data object
+                    console.log(datum['label'])
+                    document.getElementById("experience").innerHTML = ""
+                    if (datum['label'] == "Securonix India PVT LTD"){
+                        document.getElementById("experience").innerHTML =`
+<table>
+<tr>
+    <td>Total Experience </td>
+    <td>9 Year and 4 Months</td>
+</tr>
+<tr>
+    <td>Employer </td>
+    <td>Securonix India PVT. LTD. </td>
+</tr>
+</table>
+                            `
+                    } else if (datum['label'] == "Netsurion Technologies PVT LTD"){
+                        document.getElementById("experience").innerHTML =`
+<table>
+<tr>
+    <td>Total Experience </td>
+    <td>9 Year and 4 Months</td>
+</tr>
+<tr>
+    <td>Employer </td>
+    <td>Netsurion Technologies PVT. LTD. </td>
+</tr>
+</table>`
+                    } else if (datum['label'] == "Axon Network Solution PVT LTD"){
+                        document.getElementById("experience").innerHTML =`
+<table>
+<tr>
+    <td>Total Experience </td>
+    <td>9 Year and 4 Months</td>
+</tr>
+<tr>
+    <td>Employer </td>
+    <td>Axon Network Solution PVT. LTD. </td>
+</tr>
+</table>`
+                    } else{
+                        document.getElementById("experience").innerHTML =`
+<table>
+<tr>
+    <td>Total Experience </td>
+    <td>9 Year and 4 Months</td>
+</tr>
+<tr>
+    <td>Employer </td>
+    <td>IT Support Desk PVT. LTD. </td>
+</tr>
+</table>`
+                    }
+                });
                 var svg = d3.select("#timeline").append("svg").attr("width", width)
                     .datum(testData).call(chart);
         },

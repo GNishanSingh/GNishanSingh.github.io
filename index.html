@@ -1,6 +1,49 @@
 <!DOCTYPE html>
 <html>
 <style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+    p{
+    margin:0;
+    padding:0;
+    font-size:10px;
+    }
     .terminal img {
         max-width: 100%;
         overflow: scroll;
@@ -41,7 +84,7 @@
 <head>
     <script src="script/jquery-3.3.1.min.js"></script>
     <script src="script/terminal/jquery.terminal-2.34.0.min.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="css/jquery.terminal.min.css" />
     <script src="script/d3-timeline.js"></script>
     <script src="script/Profile.js"></script>
