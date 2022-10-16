@@ -1,94 +1,92 @@
 <!DOCTYPE html>
 <html>
 <style>
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
+  table td{
+  border:none;
+  }
 
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -60px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* background-color: #2196F3; */
+    padding: 10px;
+  }
 
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
+  .grid-item {
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    padding: 20px;
+    font-family: var(--font, monospace);
+    font-size: 10px;
+    text-align: left;
+  }
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-    p{
-    margin:0;
-    padding:0;
-    font-size:10px;
-    }
-    .terminal img {
-        max-width: 100%;
-        overflow: scroll;
-    }
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: blue;
-      shape-rendering: crispEdges;
-    }
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+  }
 
-    .axis text {
-      font-family: var(--font,monospace);
-      stroke: red;
-      font-size: 8px;
-    }
+  .terminal img {
+    max-width: 100%;
+    overflow: scroll;
+  }
 
-    .timeline-label {
-      font-family: var(--font,monospace);   
-      stroke: rgb(181, 31, 31);
-      font-size: 10px;
-      font-weight: 100;
-    }
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: blue;
+    shape-rendering: crispEdges;
+  }
 
-    #timeline2 .axis {
-      transform: translate(0px,40px);
-      -ms-transform: translate(0px,40px); /* IE 9 */
-      -webkit-transform: translate(0px,40px); /* Safari and Chrome */
-      -o-transform: translate(0px,40px); /* Opera */
-      -moz-transform: translate(0px,40px); /* Firefox */
-    }
-    
-    .coloredDiv {
-      height:20px; width:50px; float:left;
-    }
+  .axis text {
+    font-family: var(--font, monospace);
+    stroke: red;
+    font-size: 8px;
+  }
+
+  .timeline-label {
+    font-family: var(--font, monospace);
+    stroke: rgb(181, 31, 31);
+    font-size: 10px;
+    font-weight: 100;
+  }
+
+  #timeline2 .axis {
+    transform: translate(0px, 40px);
+    -ms-transform: translate(0px, 40px);
+    /* IE 9 */
+    -webkit-transform: translate(0px, 40px);
+    /* Safari and Chrome */
+    -o-transform: translate(0px, 40px);
+    /* Opera */
+    -moz-transform: translate(0px, 40px);
+    /* Firefox */
+  }
+
+  .coloredDiv {
+    height: 20px;
+    width: 50px;
+    float: left;
+  }
 </style>
 
 <head>
-    <script src="script/jquery-3.3.1.min.js"></script>
-    <script src="script/terminal/jquery.terminal-2.34.0.min.js"></script>
-    <script src="script/d3.v3.min.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="css/jquery.terminal.min.css" />
-    <script src="script/d3-timeline.js"></script>
-    <script src="script/Profile.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="script/jquery-3.3.1.min.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="script/terminal/jquery.terminal-2.34.0.min.js"></script>
+  <script src="script/d3.v3.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="css/jquery.terminal.min.css" />
+  <script src="script/d3-timeline.js"></script>
+  <script src="script/Profile.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
 
 <body class="terminal">
