@@ -1,14 +1,16 @@
 $(function () {
     $('body').terminal({
         whoami: function () {
+            if (document.getElementById('details')){
+                document.getElementById('details').remove()
+            }
             this.echo(`
-            <div class="grid-container">
+            <div class="grid-container" id='details'>
                 <div class="grid-item" id='basicdetais'></div>
-                <div class="grid-item" id='skillset'></div>
+                <div class="grid-item" id='skillset'><p style="color:green;font-size:14px;">Skill Set</p></div>
             </div>
             `, { raw: true })
             document.getElementById("basicdetais").innerHTML = `
-            <p style="color:green;font-size:14px;">Details about me</p>
             <table>
             <tr>
                 <td style="border:none;">Name</td>
@@ -136,17 +138,9 @@ $(function () {
             endAngle: 264,
             innerRadius: am5.percent(40)
             }));
-            // const cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
-            // behavior: "zoomX"
-            // }));
-            // cursor.lineY.set("forceHidden", true);
-            // chart.set("scrollbarX", am5.Scrollbar.new(root, {
-            // orientation: "horizontal",
-            // exportable: false
-            // }));
 
             var xRenderer = am5radar.AxisRendererCircular.new(root, {
-            minGridDistance: 30
+            minGridDistance: 20
             });
 
             xRenderer.grid.template.set("forceHidden", true);
@@ -194,7 +188,7 @@ $(function () {
                 {category: 'HTML/Javascript', value:7},
                 {category: 'Regular Expressions',value:9},
                 {category: 'EventTracker', value:6},
-                {category: 'SNYPR', value:1},
+                {category: 'Securonix SNYPR', value:1},
                 {category: 'Log Normalization',value:9},
                 {category: 'Security Content Development', value:8},
                 {category: 'Offensive Security', value:2}
@@ -209,13 +203,16 @@ $(function () {
             });
         },
         experience: function () {
+            if (document.getElementById('exp')){
+            document.getElementById('exp').remove()
+            }
             this.echo(`
-<div class="column">
+<div class="grid-container" id="exp">
+    <p><strong>Total Experience :</strong> 9 Years and 4 Month</p>
     <p></p>
     <p></p>
-    <div class="row" id="timeline"></div>
-    <div class="row" id="tooltip"></div>
-    <div class="row" id="experience"></div>
+    <div class="grid-item" id="timeline"></div>
+    <div class="grid-item" id="experience"></div>
 </div>
             
             `, { raw: true })
@@ -248,11 +245,11 @@ $(function () {
             chart.beginning(1370875320000)
             chart.ending(1665326520000)
             chart.mouseover(function (d, i, datum) {
-                document.getElementById("tooltip").innerHTML = ""
-                document.getElementById("tooltip").innerHTML = "Please click on it for getting more details about my experience in '" + datum['label'] + "'"
+                document.getElementById("experience").innerHTML = ""
+                document.getElementById("experience").innerHTML = "Please click on it for getting more details about my experience in '" + datum['label'] + "'"
             });
             chart.mouseout(function (d, i, datum) {
-                document.getElementById("tooltip").innerHTML = ""
+                document.getElementById("experience").innerHTML = ""
             }
             );
             chart.click(function (d, i, datum) {
@@ -262,12 +259,14 @@ $(function () {
                     document.getElementById("experience").innerHTML = `
 <table>
 <tr>
-    <td>Total Experience </td>
-    <td>9 Year and 4 Months</td>
+    <td style="border:none;">Total Experience </td>
+    <td style="border:none;">:</td>
+    <td style="border:none;">9 Year and 4 Months</td>
 </tr>
 <tr>
-    <td>Employer </td>
-    <td>Securonix India PVT. LTD. </td>
+    <td style="border:none;">Employer </td>
+    <td style="border:none;">:</td>
+    <td style="border:none;">Securonix India PVT. LTD. </td>
 </tr>
 </table>
                             `
@@ -275,36 +274,42 @@ $(function () {
                     document.getElementById("experience").innerHTML = `
 <table>
 <tr>
-    <td>Total Experience </td>
-    <td>9 Year and 4 Months</td>
+    <td style="border:none;">Total Experience </td>
+    <td style="border:none;">:</td>
+    <td style="border:none;">9 Year and 4 Months</td>
 </tr>
 <tr>
-    <td>Employer </td>
-    <td>Netsurion Technologies PVT. LTD. </td>
+    <td style="border:none;">Employer </td>
+    <td style="border:none;">:</td>
+    <td style="border:none;">Netsurion Technologies PVT. LTD. </td>
 </tr>
 </table>`
                 } else if (datum['label'] == "Axon Network Solution PVT LTD") {
                     document.getElementById("experience").innerHTML = `
 <table>
 <tr>
-    <td>Total Experience </td>
-    <td>9 Year and 4 Months</td>
+    <td style="border:none;">Total Experience </td>
+    <td style="border:none;">:</td>
+    <td style="border:none;">9 Year and 4 Months</td>
 </tr>
 <tr>
-    <td>Employer </td>
-    <td>Axon Network Solution PVT. LTD. </td>
+    <td style="border:none;">Employer </td>
+    <td style="border:none;">:</td>
+    <td style="border:none;">Axon Network Solution PVT. LTD. </td>
 </tr>
 </table>`
                 } else {
                     document.getElementById("experience").innerHTML = `
 <table>
 <tr>
-    <td>Total Experience </td>
-    <td>9 Year and 4 Months</td>
+    <td style="border:none;">Total Experience </td>
+    <td style="border:none;">:</td>
+    <td style="border:none;">9 Year and 4 Months</td>
 </tr>
 <tr>
-    <td>Employer </td>
-    <td>IT Support Desk PVT. LTD. </td>
+    <td style="border:none;">Employer </td>
+    <td style="border:none;">:</td>
+    <td style="border:none;">IT Support Desk PVT. LTD. </td>
 </tr>
 </table>`
                 }
