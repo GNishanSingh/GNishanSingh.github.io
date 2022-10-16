@@ -13,114 +13,119 @@ $(function () {
             document.getElementById("basicdetais").innerHTML = `
             <table>
             <tr>
-                <td style="border:none;">Name</td>
+                <td style="border:none;color:blue;">Name</td>
                 <td style="border:none;">:</td>
-                <td style="border:none;">Gurmukhnishan Singh</td>
+                <td style="border:none;padding-left:10px;">Gurmukhnishan Singh</td>
             </tr>
             <tr>
-                <td style="border:none;">Current Designation</td>
+                <td style="border:none;color:blue;">Current Designation</td>
                 <td style="border:none;">:</td>
-                <td style="border:none;">Technical Lead (Detection Engineering)</td>
+                <td style="border:none;padding-left:10px;">Technical Lead (Detection Engineering)</td>
             </tr>
             <tr>
-                <td style="border:none;">Current Employer</td>
+                <td style="border:none;color:blue;">Current Employer</td>
                 <td style="border:none;">:</td>
-                <td style="border:none;">Securonix India PVT. LTD.</td>
+                <td style="border:none;padding-left:10px;">Securonix India PVT. LTD.</td>
             </tr>
             <tr>
-                <td style="border:none;">Total Experience</td>
+                <td style="border:none;color:blue;">Total Experience</td>
                 <td style="border:none;">:</td>
-                <td style="border:none;">9 years and 3 month</td>
+                <td style="border:none;padding-left:10px;">9 years and 3 month</td>
             </tr>
             <tr>
-                <td style="border:none;">Previous Employers</td>
-                <td style="border:none;">:</td>
-                <td style="border:none;"></td>
-            </tr>
-            <tr>
-                <td style="border:none;"></td>
-                <td style="border:none;"></td>
-                <td style="border:none;">Netsurion Technologies PVT. LTD.] (6 years and 6 months) (June 2015 - November 2021)</td>
-            </tr>
-            <tr>
-                <td style="border:none;"></td>
-                <td style="border:none;"></td>
-                <td style="border:none;">Axon Network Solution PVT. LTD.] (1 year and 1 month) (December 2013 - June 2015)</td>
-            </tr>
-            <tr>
-                <td style="border:none;"></td>
-                <td style="border:none;"></td>
-                <td style="border:none;">IT Support Desk Limited.] (6 months) (june 2013 - november 2013)</td>
-            </tr>
-            <tr>
-                <td style="border:none;"></td>
-                <td style="border:none;"></td>
-                <td style="border:none;">IT Support Desk Limited.] (6 months) (june 2013 - november 2013)</td>
-            </tr>
-            <tr>
-                <td style="border:none;">Education</td>
-                <td style="border:none;">:</td>
-                <td style="border:none;">Bachelor of Engineering (2008-2012)</td>
-            </tr>
-            <tr>
-                <td style="border:none;">Certification</td>
+                <td style="border:none;color:blue;">Previous Employers</td>
                 <td style="border:none;">:</td>
                 <td style="border:none;"></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;"><a href="https://mad-certified.mitre-engenuity.org/02aa55f6-287a-4299-8d47-6cd2c2c2bfae" target="_blank">ATT&CK Cyber Threat Intelligence Certification</a></td>
+                <td style="border:none;padding-left:10px;"><li>Netsurion Technologies PVT. LTD.] (6 years and 6 months) (June 2015 - November 2021)</li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;"><a href="https://mad-certified.mitre-engenuity.org/6245378c-8b5d-4888-9246-e0b1f801590d" target="_blank">ATT&CK Security Operations Center Assessment Certification</a></td>
+                <td style="border:none;padding-left:10px;"><li>Axon Network Solution PVT. LTD.] (1 year and 1 month) (December 2013 - June 2015)</li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;"><a href="https://securonixacademy.northpass.com/courses/fefba1a5-03d0-425e-a77c-c4b9f8f4e26a/certificate" target="_blank">Certified SNYPR Content Developer</a></td>
+                <td style="border:none;padding-left:10px;"><li>IT Support Desk Limited.] (6 months) (june 2013 - november 2013)</li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;"><a href="https://securonixacademy.northpass.com/courses/51d09917-09e5-41ef-8bc1-97a24ff78f52/certificate" target="_blank">Certified SNYPR Data Integrator</a></td>
+                <td style="border:none;padding-left:10px;"><li>IT Support Desk Limited.] (6 months) (june 2013 - november 2013)</li></td>
             </tr>
             <tr>
-                <td style="border:none;"></td>
-                <td style="border:none;"></td>
-                <td style="border:none;"><a href="https://securonixacademy.northpass.com/courses/dcd6cbc2-727b-47b0-b585-3ad3fffc2f74/certificate" target="_blank">Certified SNYPR Security Analyst</a></td>
+                <td style="border:none;color:blue;">Education</td>
+                <td style="border:none;">:</td>
+                <td style="border:none;padding-left:10px;">Bachelor of Engineering (2008-2012)</td>
             </tr>
             <tr>
-                <td style="border:none;">Project</td>
+                <td style="border:none;color:blue;">Certification</td>
                 <td style="border:none;">:</td>
                 <td style="border:none;"></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;"><a href="https://github.com/GNishanSingh/Optm_ParserEngine" target="_blank">Optimized Parser Engine</a></td>
+                <td style="border:none;padding-left:10px;"><li><a href="https://mad-certified.mitre-engenuity.org/02aa55f6-287a-4299-8d47-6cd2c2c2bfae" target="_blank">ATT&CK Cyber Threat Intelligence Certification</a></li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;"><a href="https://serverlessrepo.aws.amazon.com/applications/us-east-1/655631112574/ETS-AWS-Logforwarder" target="_blank">AWS Connector with SIEM</a></td>
+                <td style="border:none;padding-left:10px;"><li><a href="https://mad-certified.mitre-engenuity.org/6245378c-8b5d-4888-9246-e0b1f801590d" target="_blank">ATT&CK Security Operations Center Assessment Certification</a></li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;"><a href="https://www.netsurion.com/knowledge-packs/microsoft-azure" target="_blank">Azure Connector with SIEM</a></td>
+                <td style="border:none;padding-left:10px;"><li><a href="https://securonixacademy.northpass.com/courses/fefba1a5-03d0-425e-a77c-c4b9f8f4e26a/certificate" target="_blank">Certified SNYPR Content Developer</a></li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;"><a href="https://www.netsurion.com/capabilities/mitre-attack" target="_blank">MITRE ATT&CK Integration with EventTracker</a></td>
+                <td style="border:none;padding-left:10px;"><li><a href="https://securonixacademy.northpass.com/courses/51d09917-09e5-41ef-8bc1-97a24ff78f52/certificate" target="_blank">Certified SNYPR Data Integrator</a></li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;"><a href="https://www.netsurion.com/eventtracker-support/software-updates/v9x/et93u21-056" target="_blank">Vulnerability Management Integration with EventTracker</a></td>
+                <td style="border:none;padding-left:10px;"><li><a href="https://securonixacademy.northpass.com/courses/dcd6cbc2-727b-47b0-b585-3ad3fffc2f74/certificate" target="_blank">Certified SNYPR Security Analyst</a></li></td>
+            </tr>
+            <tr>
+                <td style="border:none;color:blue;">Project</td>
+                <td style="border:none;">:</td>
+                <td style="border:none;"></td>
+            </tr>
+            <tr>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;padding-left:10px;"><li><a href="https://github.com/GNishanSingh/Optm_ParserEngine" target="_blank">Optimized Parser Engine</a></li></td>
+            </tr>
+            <tr>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;padding-left:10px;"><li><a href="https://serverlessrepo.aws.amazon.com/applications/us-east-1/655631112574/ETS-AWS-Logforwarder" target="_blank">AWS Connector for SIEM</a></li</td>
+            </tr>
+            <tr>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;padding-left:10px;"><li><a href="https://www.netsurion.com/knowledge-packs/microsoft-azure" target="_blank">Azure Connector for SIEM</a></li</td>
+            </tr>
+            <tr>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;padding-left:10px;"><li><a href="https://www.netsurion.com/capabilities/mitre-attack" target="_blank">MITRE ATT&CK Integration with EventTracker</a></li</td>
+            </tr>
+            <tr>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;padding-left:10px;"><li><a href="https://www.netsurion.com/eventtracker-support/software-updates/v9x/et93u21-056" target="_blank">Vulnerability Management Integration with EventTracker</a></li</td>
+            </tr>
+            <tr>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;padding-left:10px;"><li><a href="https://www.netsurion.com/environments/microsoft-365-security" target="_blank">Microsoft 365 Connector for SIEM</a></li</td>
             </tr>
             </table>
             `;
@@ -191,7 +196,8 @@ $(function () {
                 {category: 'Securonix SNYPR', value:1},
                 {category: 'Log Normalization',value:9},
                 {category: 'Security Content Development', value:8},
-                {category: 'Offensive Security', value:2}
+                {category: 'Offensive Security', value:2},
+                {category: 'Visualisation', value:6 }
             ];
 
             xAxis.data.setAll(data);
@@ -208,15 +214,18 @@ $(function () {
             }
             this.echo(`
 <div class="grid-container" id="exp">
-    <p><strong>Total Experience :</strong> 9 Years and 4 Month</p>
+    <p><strong style="color:blue;">Total Experience :</strong> 9 Years and 4 Month</p>
     <p></p>
     <p></p>
     <div class="grid-item" id="timeline"></div>
+    <div class="grid-item">
+    <div class="grid-item" id="tooltip"></div>
     <div class="grid-item" id="experience"></div>
+    </div>
 </div>
             
             `, { raw: true })
-            var width = 1000;
+            var width = 700;
             var testData = [
                 {
                     label: "Securonix India PVT LTD", times: [
@@ -245,11 +254,11 @@ $(function () {
             chart.beginning(1370875320000)
             chart.ending(1665326520000)
             chart.mouseover(function (d, i, datum) {
-                document.getElementById("experience").innerHTML = ""
-                document.getElementById("experience").innerHTML = "Please click on it for getting more details about my experience in '" + datum['label'] + "'"
+                document.getElementById("tooltip").innerHTML = ""
+                document.getElementById("tooltip").innerHTML = "Please click on it for getting more details about my experience in '" + datum['label'] + "'"
             });
             chart.mouseout(function (d, i, datum) {
-                document.getElementById("experience").innerHTML = ""
+                document.getElementById("tooltip").innerHTML = ""
             }
             );
             chart.click(function (d, i, datum) {
@@ -257,61 +266,61 @@ $(function () {
                 document.getElementById("experience").innerHTML = ""
                 if (datum['label'] == "Securonix India PVT LTD") {
                     document.getElementById("experience").innerHTML = `
-<table>
-<tr>
-    <td style="border:none;">Total Experience </td>
-    <td style="border:none;">:</td>
-    <td style="border:none;">9 Year and 4 Months</td>
-</tr>
-<tr>
-    <td style="border:none;">Employer </td>
-    <td style="border:none;">:</td>
-    <td style="border:none;">Securonix India PVT. LTD. </td>
-</tr>
-</table>
+                    <table>
+                    <tr>
+                        <td style="border:none;">Duration</td>
+                        <td style="border:none;">:</td>
+                        <td style="border:none;">11 Months</td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;">Company </td>
+                        <td style="border:none;">:</td>
+                        <td style="border:none;">Securonix India PVT. LTD. </td>
+                    </tr>
+                    </table>
                             `
                 } else if (datum['label'] == "Netsurion Technologies PVT LTD") {
                     document.getElementById("experience").innerHTML = `
-<table>
-<tr>
-    <td style="border:none;">Total Experience </td>
-    <td style="border:none;">:</td>
-    <td style="border:none;">9 Year and 4 Months</td>
-</tr>
-<tr>
-    <td style="border:none;">Employer </td>
-    <td style="border:none;">:</td>
-    <td style="border:none;">Netsurion Technologies PVT. LTD. </td>
-</tr>
-</table>`
+                    <table>
+                    <tr>
+                        <td style="border:none;">Duration</td>
+                        <td style="border:none;">:</td>
+                        <td style="border:none;">6 Year and 4 Months</td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;">Company </td>
+                        <td style="border:none;">:</td>
+                        <td style="border:none;">Netsurion Technologies PVT. LTD. </td>
+                    </tr>
+                    </table>`
                 } else if (datum['label'] == "Axon Network Solution PVT LTD") {
                     document.getElementById("experience").innerHTML = `
-<table>
-<tr>
-    <td style="border:none;">Total Experience </td>
-    <td style="border:none;">:</td>
-    <td style="border:none;">9 Year and 4 Months</td>
-</tr>
-<tr>
-    <td style="border:none;">Employer </td>
-    <td style="border:none;">:</td>
-    <td style="border:none;">Axon Network Solution PVT. LTD. </td>
-</tr>
-</table>`
+                    <table>
+                    <tr>
+                        <td style="border:none;">Duration</td>
+                        <td style="border:none;">:</td>
+                        <td style="border:none;">1 Year and 7 Months</td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;">Company </td>
+                        <td style="border:none;">:</td>
+                        <td style="border:none;">Axon Network Solution PVT. LTD. </td>
+                    </tr>
+                    </table>`
                 } else {
                     document.getElementById("experience").innerHTML = `
-<table>
-<tr>
-    <td style="border:none;">Total Experience </td>
-    <td style="border:none;">:</td>
-    <td style="border:none;">9 Year and 4 Months</td>
-</tr>
-<tr>
-    <td style="border:none;">Employer </td>
-    <td style="border:none;">:</td>
-    <td style="border:none;">IT Support Desk PVT. LTD. </td>
-</tr>
-</table>`
+                <table>
+                <tr>
+                    <td style="border:none;">Duration</td>
+                    <td style="border:none;">:</td>
+                    <td style="border:none;">6 Months</td>
+                </tr>
+                <tr>
+                    <td style="border:none;">Company</td>
+                    <td style="border:none;">:</td>
+                    <td style="border:none;">IT Support Desk PVT. LTD. </td>
+                </tr>
+                </table>`
                 }
             });
             var svg = d3.select("#timeline").append("svg").attr("width", width)
