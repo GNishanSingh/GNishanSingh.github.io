@@ -40,17 +40,17 @@ $(function () {
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li>Netsurion Technologies PVT. LTD.] (6 years and 6 months) (June 2015 - November 2021)</li></td>
+                <td style="border:none;padding-left:10px;"><li>Netsurion Technologies PVT. LTD. (6 years and 6 months) (June 2015 - November 2021)</li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li>Axon Network Solution PVT. LTD.] (1 year and 1 month) (December 2013 - June 2015)</li></td>
+                <td style="border:none;padding-left:10px;"><li>Axon Network Solution PVT. LTD. (1 year and 1 month) (December 2013 - June 2015)</li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li>IT Support Desk Limited.] (6 months) (june 2013 - november 2013)</li></td>
+                <td style="border:none;padding-left:10px;"><li>IT Support Desk Limited. (6 months) (june 2013 - november 2013)</li></td>
             </tr>
             <tr>
                 <td style="border:none;color:blue;">Education</td>
