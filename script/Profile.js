@@ -53,11 +53,6 @@ $(function () {
                 <td style="border:none;padding-left:10px;"><li>IT Support Desk Limited.] (6 months) (june 2013 - november 2013)</li></td>
             </tr>
             <tr>
-                <td style="border:none;"></td>
-                <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li>IT Support Desk Limited.] (6 months) (june 2013 - november 2013)</li></td>
-            </tr>
-            <tr>
                 <td style="border:none;color:blue;">Education</td>
                 <td style="border:none;">:</td>
                 <td style="border:none;padding-left:10px;">Bachelor of Engineering (2008-2012)</td>
