@@ -256,6 +256,7 @@ $(function () {
             chart.mouseover(function (d, i, datum) {
                 document.getElementById("tooltip").innerHTML = ""
                 document.getElementById("tooltip").innerHTML = "Please click on it for getting more details about my experience in '" + datum['label'] + "'"
+                document.getElementById("experience").innerHTML = ""
             });
             chart.mouseout(function (d, i, datum) {
                 document.getElementById("tooltip").innerHTML = ""
