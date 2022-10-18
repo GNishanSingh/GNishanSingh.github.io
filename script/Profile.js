@@ -214,7 +214,8 @@ $(function () {
                 {category: 'Log Normalization',value:9},
                 {category: 'Security Content Development', value:8},
                 {category: 'Offensive Security', value:2},
-                {category: 'Visualisation', value:6 }
+                {category: 'Visualisation', value:6 },
+                {category: 'Team Management', value:4 }
             ];
 
             xAxis.data.setAll(data);
@@ -230,14 +231,16 @@ $(function () {
             document.getElementById('exp').remove()
             }
             this.echo(`
-<div class="grid-container" id="exp">
-    <p><strong style="color:blue;">Total Experience :</strong> 9 Years and 4 Month</p>
-    <p></p>
-    <p></p>
-    <div class="grid-item" id="timeline"></div>
+<div class="grid-container">
     <div class="grid-item">
-    <div class="grid-item" id="tooltip"></div>
-    <div class="grid-item" id="experience"></div>
+        <div class="grid-item">
+            <p><strong style="color:cyan;">Total Experience :</strong> 9 Years and 4 Month</p>
+        </div>
+        <div class="grid-item" id="timeline"></div>
+    </div>
+    <div class="grid-item">
+        <div class="grid-item" id="tooltip"></div>
+        <div class="grid-item" id="experience"></div>
     </div>
 </div>
             
@@ -268,11 +271,9 @@ $(function () {
                 tickSize: 13
             })
             chart.margin({ left: 150, right: 30, top: 0, bottom: 0 })
-            chart.beginning(1370875320000)
-            chart.ending(1665326520000)
             chart.mouseover(function (d, i, datum) {
                 document.getElementById("tooltip").innerHTML = ""
-                document.getElementById("tooltip").innerHTML = "Please click on it for getting more details about my experience in '" + datum['label'] + "'"
+                document.getElementById("tooltip").innerHTML = "Click for getting more details about my experience in '" + datum['label'] + "'"
                 document.getElementById("experience").innerHTML = ""
             });
             chart.mouseout(function (d, i, datum) {
@@ -326,7 +327,42 @@ $(function () {
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">Technical Lead (Security Intelligence)</td>
                     </tr>
+                    <tr>
+                        <td style="border:none;"></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Netsurion Timeline</td>
+                        <td style="border:none;">:</td>
+                        <td style="border:none;">
+                            <div id="nettimeline"></div>
+                        </td>
+                    </tr>
                     </table>`
+                    var width = 700;
+                    var testData = [
+                        {
+                            label: "Network Security Engineer", times: [
+                                { "starting_time": 1433947320000, "ending_time": 1465578620000 }
+                            ]
+                        },
+                        {
+                            label: "Subject Matter Expert", times: [
+                                { "starting_time": 1465578620000, "ending_time": 1586538623000 }
+                            ]
+                        },
+                        {
+                            label: "Technical Lead", times: [
+                                { "starting_time": 1586538623000, "ending_time": 1636564223000 }
+                            ]
+                        }
+                    ];
+                    var chart = d3.timeline().showAxisTop().stack();
+                    chart.tickFormat({
+                        format: d3.time.format("%Y"),
+                        tickSize: 4
+                    })
+                    chart.orient("bottom")
+                    chart.margin({ left: 150, right: 30, top: 0, bottom: 0 })
+                    var svg = d3.select("#nettimeline").append("svg").attr("width", 400)
+                    .datum(testData).call(chart);
                 } else if (datum['label'] == "Axon Network Solution PVT LTD") {
                     document.getElementById("experience").innerHTML = `
                     <table>
@@ -380,7 +416,7 @@ $(function () {
             this.echo(`
 Use following command for getting details about me:
 ---------------------------------------------------
-| [[;#00FFFF;]Command]    |          [[;#00FFFF;]Description]                |
+| [[;#00FFFF;]Command]     |          [[;#00FFFF;]Description]               |
 ---------------------------------------------------
 | [[;#00FFFF;]whoami]      | To read something about me         |
 | [[;#00FFFF;]experience]  | To Read about my work experience   |
@@ -402,7 +438,7 @@ Use following command for getting details about me:
 
 Use following command for getting details about me:
 ---------------------------------------------------
-| [[;#00FFFF;]Command]    |          [[;#00FFFF;]Description]                |
+| [[;#00FFFF;]Command]     |          [[;#00FFFF;]Description]               |
 ---------------------------------------------------
 | [[;#00FFFF;]whoami]      | To read something about me         |
 | [[;#00FFFF;]experience]  | To Read about my work experience   |
