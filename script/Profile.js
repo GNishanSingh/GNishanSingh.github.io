@@ -13,32 +13,32 @@ $(function () {
             document.getElementById("basicdetais").innerHTML = `
             <table>
             <tr>
-                <td style="border:none;"><i class="fa-regular fa-user" style="font-size:10px;"></i></td> 
-                <td style="border:none;color:blue;padding-left:10px;">Name</td>
+                <td style="border:none;"><i class="fa-solid fa-user" style="font-size:10px;"></i></td> 
+                <td style="border:none;color:cyan;padding-left:10px;">Name</td>
                 <td style="border:none;">:</td>
                 <td style="border:none;padding-left:10px;">Gurmukhnishan Singh</td>
             </tr>
             <tr>
                 <td style="border:none;"><i class="fa-solid fa-award" style="font-size:10px;"></i></td>
-                <td style="border:none;color:blue;padding-left:10px;">Current Designation</td>
+                <td style="border:none;color:cyan;padding-left:10px;">Current Designation</td>
                 <td style="border:none;">:</td>
                 <td style="border:none;padding-left:10px;">Technical Lead (Detection Engineering)</td>
             </tr>
             <tr>
-                <td style="border:none;"><i class="fa-regular fa-building"></i></td>
-                <td style="border:none;color:blue;padding-left:10px;">Current Employer</td>
+                <td style="border:none;"><i class="fa-solid fa-building"></i></td>
+                <td style="border:none;color:cyan;padding-left:10px;">Current Employer</td>
                 <td style="border:none;">:</td>
                 <td style="border:none;padding-left:10px;">Securonix India PVT. LTD.</td>
             </tr>
             <tr>
                 <td style="border:none;"><i class="fa-solid fa-timeline"></i></td>
-                <td style="border:none;color:blue;padding-left:10px;">Total Experience</td>
+                <td style="border:none;color:cyan;padding-left:10px;">Total Experience</td>
                 <td style="border:none;">:</td>
                 <td style="border:none;padding-left:10px;">9 years and 3 month</td>
             </tr>
             <tr>
-                <td style="border:none;"><i class="fa-regular fa-building"></i></td>
-                <td style="border:none;color:blue;padding-left:10px;">Previous Employers</td>
+                <td style="border:none;"><i class="fa-solid fa-building"></i></td>
+                <td style="border:none;color:cyan;padding-left:10px;">Previous Employers</td>
                 <td style="border:none;">:</td>
                 <td style="border:none;"></td>
             </tr>
@@ -62,13 +62,13 @@ $(function () {
             </tr>
             <tr>
                 <td style="border:none;"><i class="fa-solid fa-user-graduate"></i></td>
-                <td style="border:none;color:blue;padding-left:10px;">Education</td>
+                <td style="border:none;color:cyan;padding-left:10px;">Education</td>
                 <td style="border:none;">:</td>
                 <td style="border:none;padding-left:10px;">Bachelor of Engineering (2008-2012)</td>
             </tr>
             <tr>
                 <td style="border:none;"><i class="fa-solid fa-certificate"></i></td>
-                <td style="border:none;color:blue;padding-left:10px;">Certification</td>
+                <td style="border:none;color:cyan;padding-left:10px;">Certification</td>
                 <td style="border:none;">:</td>
                 <td style="border:none;"></td>
             </tr>
@@ -104,7 +104,7 @@ $(function () {
             </tr>
             <tr>
                 <td style="border:none;"><i class="fa-solid fa-diagram-project"></i></td>
-                <td style="border:none;color:blue;padding-left:10px;">Project</td>
+                <td style="border:none;color:cyan;padding-left:10px;">Project</td>
                 <td style="border:none;">:</td>
                 <td style="border:none;"></td>
             </tr>
@@ -286,17 +286,20 @@ $(function () {
                     document.getElementById("experience").innerHTML = `
                     <table>
                     <tr>
-                        <td style="border:none;">Duration</td>
+                        <td style="border:none;"><i class="fa-solid fa-timeline"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Duration</td>
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">11 Months (Dec 2021 - Present)</td>
                     </tr>
                     <tr>
-                        <td style="border:none;">Company</td>
+                        <td style="border:none;"><i class="fa-solid fa-building"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Company</td>
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">Securonix India PVT. LTD. </td>
                     </tr>
                     <tr>
-                        <td style="border:none;">Last designation</td>
+                        <td style="border:none;"><i class="fa-solid fa-award" style="font-size:10px;"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Last designation</td>
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">Technical Lead (Detection Engineering)</td>
                     </tr>
@@ -306,17 +309,20 @@ $(function () {
                     document.getElementById("experience").innerHTML = `
                     <table>
                     <tr>
-                        <td style="border:none;">Duration</td>
+                    <td style="border:none;"><i class="fa-solid fa-timeline"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Duration</td>
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">6 Year and 6 Months (Jun 2015 - Nov 2021)</td>
                     </tr>
                     <tr>
-                        <td style="border:none;">Company </td>
+                    <td style="border:none;"><i class="fa-solid fa-building"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Company </td>
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">Netsurion Technologies PVT. LTD. </td>
                     </tr>
                     <tr>
-                        <td style="border:none;">Last designation</td>
+                        <td style="border:none;"><i class="fa-solid fa-award" style="font-size:10px;"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Last designation</td>
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">Technical Lead (Security Intelligence)</td>
                     </tr>
@@ -325,17 +331,20 @@ $(function () {
                     document.getElementById("experience").innerHTML = `
                     <table>
                     <tr>
-                        <td style="border:none;">Duration</td>
+                    <td style="border:none;"><i class="fa-solid fa-timeline"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Duration</td>
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">1 Year and 7 Months (Dec 2013 - Jun 2015)</td>
                     </tr>
                     <tr>
-                        <td style="border:none;">Company </td>
+                    <td style="border:none;"><i class="fa-solid fa-building"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Company </td>
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">Axon Network Solution PVT. LTD. </td>
                     </tr>
                     <tr>
-                        <td style="border:none;">Last designation</td>
+                    <td style="border:none;"><i class="fa-solid fa-award" style="font-size:10px;"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Last designation</td>
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">System Engineer</td>
                     </tr>
@@ -344,17 +353,20 @@ $(function () {
                     document.getElementById("experience").innerHTML = `
                 <table>
                 <tr>
-                    <td style="border:none;">Duration</td>
+                <td style="border:none;"><i class="fa-solid fa-timeline"></i></td>
+                    <td style="border:none;color:cyan;padding-left:10px;">Duration</td>
                     <td style="border:none;">:</td>
                     <td style="border:none;padding-left:10px;">6 Months (Jun 2013 - Nov 2013)</td>
                 </tr>
                 <tr>
-                    <td style="border:none;">Company</td>
+                <td style="border:none;"><i class="fa-solid fa-building"></i></td>
+                    <td style="border:none;color:cyan;padding-left:10px;">Company</td>
                     <td style="border:none;">:</td>
                     <td style="border:none;padding-left:10px;">IT Support Desk PVT. LTD. </td>
                 </tr>
                 <tr>
-                    <td style="border:none;">Last designation</td>
+                <td style="border:none;"><i class="fa-solid fa-award" style="font-size:10px;"></i></td>
+                    <td style="border:none;color:cyan;padding-left:10px;">Last designation</td>
                     <td style="border:none;">:</td>
                     <td style="border:none;padding-left:10px;">Desktop Support Engineer</td>
                 </tr>
@@ -368,12 +380,12 @@ $(function () {
             this.echo(`
 Use following command for getting details about me:
 ---------------------------------------------------
-| [[b;#0000FF;]Command]   |          [[b;#0000FF;]Description]                |
+| [[;#00FFFF;]Command]    |          [[;#00FFFF;]Description]                |
 ---------------------------------------------------
-| [[b;#0000FF;]whoami]     | To read something about me         |
-| [[b;#0000FF;]experience] | To Read about my work experience   |
-| [[b;#0000FF;]projects]   | To Read about project i have done  |
-| [[b;#0000FF;]help]       | To get command helps               |
+| [[;#00FFFF;]whoami]      | To read something about me         |
+| [[;#00FFFF;]experience]  | To Read about my work experience   |
+| [[;#00FFFF;]projects]    | To Read about project i have done  |
+| [[;#00FFFF;]help]        | To get command helps               |
 ---------------------------------------------------
             `)
         }
@@ -390,12 +402,12 @@ Use following command for getting details about me:
 
 Use following command for getting details about me:
 ---------------------------------------------------
-| [[b;#0000FF;]Command]   |          [[b;#0000FF;]Description]                |
+| [[;#00FFFF;]Command]    |          [[;#00FFFF;]Description]                |
 ---------------------------------------------------
-| [[b;#0000FF;]whoami]     | To read something about me         |
-| [[b;#0000FF;]experience] | To Read about my work experience   |
-| [[b;#0000FF;]projects]   | To Read about project i have done  |
-| [[b;#0000FF;]help]       | To get command helps               |
+| [[;#00FFFF;]whoami]      | To read something about me         |
+| [[;#00FFFF;]experience]  | To Read about my work experience   |
+| [[;#00FFFF;]projects]    | To Read about project i have done  |
+| [[;#00FFFF;]help]        | To get command helps               |
 ---------------------------------------------------
 `,
         prompt: '[[;red;]g_nishan_singh] >'
