@@ -1,7 +1,8 @@
 $(function () {
     $('body').terminal({
         whoami: function () {
-            if (document.getElementById('details')){
+            document.getElementById("clicksound").play();
+            if (document.getElementById('details')) {
                 document.getElementById('details').remove()
             }
             this.echo(`
@@ -146,92 +147,97 @@ $(function () {
             </tr>
             </table>
             `;
-            am5.ready(function() {
-            var root = am5.Root.new("skillset");
-            root.setThemes([
-            am5themes_Animated.new(root)
-            ]);
-            var chart = root.container.children.push(am5radar.RadarChart.new(root, {
-            panX: false,
-            panY: false,
-            wheelX: "none",
-            wheelY: "none",
-            startAngle: -84,
-            endAngle: 264,
-            innerRadius: am5.percent(40)
-            }));
+            am5.ready(function () {
+                var root = am5.Root.new("skillset");
+                root.setThemes([
+                    am5themes_Animated.new(root)
+                ]);
+                var chart = root.container.children.push(am5radar.RadarChart.new(root, {
+                    panX: false,
+                    panY: false,
+                    wheelX: "none",
+                    wheelY: "none",
+                    startAngle: -84,
+                    endAngle: 264,
+                    innerRadius: am5.percent(40)
+                }));
 
-            var xRenderer = am5radar.AxisRendererCircular.new(root, {
-            minGridDistance: 20
-            });
+                var xRenderer = am5radar.AxisRendererCircular.new(root, {
+                    minGridDistance: 20
+                });
 
-            xRenderer.grid.template.set("forceHidden", true);
+                xRenderer.grid.template.set("forceHidden", true);
 
-            var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-            maxDeviation: 0,
-            categoryField: "category",
-            renderer: xRenderer
-            }));
+                var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+                    maxDeviation: 0,
+                    categoryField: "category",
+                    renderer: xRenderer
+                }));
 
-            var yRenderer = am5radar.AxisRendererRadial.new(root, {});
-            yRenderer.labels.template.set("centerX", am5.p50);
+                var yRenderer = am5radar.AxisRendererRadial.new(root, {});
+                yRenderer.labels.template.set("centerX", am5.p50);
 
-            var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-            maxDeviation: 0.3,
-            min: 0,
-            renderer: yRenderer
-            }));
-            var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
-            name: "Series 1",
-            sequencedInterpolation: true,
-            xAxis: xAxis,
-            yAxis: yAxis,
-            valueYField: "value",
-            categoryXField: "category"
-            }));
+                var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+                    maxDeviation: 0.3,
+                    min: 0,
+                    renderer: yRenderer
+                }));
+                var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
+                    name: "Series 1",
+                    sequencedInterpolation: true,
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "value",
+                    categoryXField: "category"
+                }));
 
-            series.columns.template.setAll({
-            cornerRadius: 5,
-            tooltipText: "{categoryX}: {valueY}"
-            });
+                series.columns.template.setAll({
+                    cornerRadius: 5,
+                    tooltipText: "{categoryX}: {valueY} Years"
+                });
 
-            series.columns.template.adapters.add("fill", function (fill, target) {
-            return chart.get("colors").getIndex(series.columns.indexOf(target));
-            });
+                series.columns.template.adapters.add("fill", function (fill, target) {
+                    return chart.get("colors").getIndex(series.columns.indexOf(target));
+                });
 
-            series.columns.template.adapters.add("stroke", function (stroke, target) {
-            return chart.get("colors").getIndex(series.columns.indexOf(target));
-            });
+                series.columns.template.adapters.add("stroke", function (stroke, target) {
+                    return chart.get("colors").getIndex(series.columns.indexOf(target));
+                });
 
-            var data = [
-                {category: 'Python', value:7},
-                {category: 'Powershell',value:8},
-                {category: 'Cybersecurity',value:8},
-                {category: 'HTML/Javascript', value:7},
-                {category: 'Regular Expressions',value:9},
-                {category: 'EventTracker', value:6},
-                {category: 'Securonix SNYPR', value:1},
-                {category: 'Log Normalization',value:9},
-                {category: 'Security Content Development', value:8},
-                {category: 'Offensive Security', value:2},
-                {category: 'Visualisation', value:6 },
-                {category: 'Team Management', value:4 }
-            ];
+                var data = [
+                    { category: 'Python', value: 7 },
+                    { category: 'Powershell', value: 8 },
+                    { category: 'Cybersecurity', value: 8 },
+                    { category: 'HTML/Javascript', value: 7 },
+                    { category: 'Regular Expressions', value: 9 },
+                    { category: 'EventTracker', value: 6 },
+                    { category: 'Securonix SNYPR', value: 1 },
+                    { category: 'Log Normalization', value: 9 },
+                    { category: 'Security Content Development', value: 8 },
+                    { category: 'Offensive Security', value: 2 },
+                    { category: 'Visualisation', value: 6 },
+                    { category: 'Team Management', value: 4 },
+                    { category: 'SIEM', value: 7 }
+                ];
 
-            xAxis.data.setAll(data);
-            series.data.setAll(data);
+                xAxis.data.setAll(data);
+                series.data.setAll(data);
 
-            series.appear(1000);
-            chart.appear(1000, 100);
+                series.appear(1000);
+                chart.appear(1000, 100);
 
             });
         },
         experience: function () {
-            if (document.getElementById('exp')){
-            document.getElementById('exp').remove()
+            document.getElementById("clicksound").play();
+            if (document.getElementById('exp')) {
+                document.getElementById('exp').remove()
             }
             this.echo(`
-<div class="grid-container">
+<audio id='clicksound'>
+    <source src="script/clicksound.wav" type="audio/wav">
+</audio>
+<div class="grid-container" id='exp'>
     <div class="grid-item">
         <div class="grid-item">
             <p><strong style="color:cyan;">Total Experience :</strong> 9 Years and 4 Month</p>
@@ -248,16 +254,16 @@ $(function () {
             var width = 700;
             var testData = [
                 {
-                    label: "Securonix India PVT LTD", times: [
+                    label: "Securonix India PVT. LTD.", times: [
                         { "starting_time": 1637419320000, "ending_time": 1665326520000 }]
                 },
                 {
-                    label: "Netsurion Technologies PVT LTD", times: [
+                    label: "Netsurion Technologies PVT. LTD.", times: [
                         { "starting_time": 1433947320000, "ending_time": 1637419320000 }
                     ]
                 },
                 {
-                    label: "Axon Network Solution PVT LTD", times: [
+                    label: "Axon Network Solution PVT. LTD.", times: [
                         { "starting_time": 1384094520000, "ending_time": 1433947320000 }]
                 },
                 {
@@ -272,18 +278,16 @@ $(function () {
             })
             chart.margin({ left: 150, right: 30, top: 0, bottom: 0 })
             chart.mouseover(function (d, i, datum) {
-                document.getElementById("tooltip").innerHTML = ""
-                document.getElementById("tooltip").innerHTML = "Click for getting more details about my experience in '" + datum['label'] + "'"
-                document.getElementById("experience").innerHTML = ""
+
             });
             chart.mouseout(function (d, i, datum) {
                 document.getElementById("tooltip").innerHTML = ""
             }
             );
-            chart.click(function (d, i, datum) {
-                console.log(datum['label'])
+            chart.mouseover(function (d, i, datum) {
+                document.getElementById("expsound").play();
                 document.getElementById("experience").innerHTML = ""
-                if (datum['label'] == "Securonix India PVT LTD") {
+                if (datum['label'] == "Securonix India PVT. LTD.") {
                     document.getElementById("experience").innerHTML = `
                     <table>
                     <tr>
@@ -296,7 +300,7 @@ $(function () {
                         <td style="border:none;"><i class="fa-solid fa-building"></i></td>
                         <td style="border:none;color:cyan;padding-left:10px;">Company</td>
                         <td style="border:none;">:</td>
-                        <td style="border:none;padding-left:10px;">Securonix India PVT. LTD. </td>
+                        <td style="border:none;padding-left:10px;" id='exptable'>Securonix India PVT. LTD.</td>
                     </tr>
                     <tr>
                         <td style="border:none;"><i class="fa-solid fa-award" style="font-size:10px;"></i></td>
@@ -306,7 +310,7 @@ $(function () {
                     </tr>
                     </table>
                             `
-                } else if (datum['label'] == "Netsurion Technologies PVT LTD") {
+                } else if (datum['label'] == "Netsurion Technologies PVT. LTD.") {
                     document.getElementById("experience").innerHTML = `
                     <table>
                     <tr>
@@ -319,7 +323,7 @@ $(function () {
                     <td style="border:none;"><i class="fa-solid fa-building"></i></td>
                         <td style="border:none;color:cyan;padding-left:10px;">Company </td>
                         <td style="border:none;">:</td>
-                        <td style="border:none;padding-left:10px;">Netsurion Technologies PVT. LTD. </td>
+                        <td style="border:none;padding-left:10px;" id='exptable'>Netsurion Technologies PVT. LTD.</td>
                     </tr>
                     <tr>
                         <td style="border:none;"><i class="fa-solid fa-award" style="font-size:10px;"></i></td>
@@ -328,7 +332,7 @@ $(function () {
                         <td style="border:none;padding-left:10px;">Technical Lead (Security Intelligence)</td>
                     </tr>
                     <tr>
-                        <td style="border:none;"></td>
+                        <td style="border:none;"><i class="fa-solid fa-bars-staggered"></i></td>
                         <td style="border:none;color:cyan;padding-left:10px;">Netsurion Timeline</td>
                         <td style="border:none;">:</td>
                         <td style="border:none;">
@@ -362,8 +366,8 @@ $(function () {
                     chart.orient("bottom")
                     chart.margin({ left: 150, right: 30, top: 0, bottom: 0 })
                     var svg = d3.select("#nettimeline").append("svg").attr("width", 400)
-                    .datum(testData).call(chart);
-                } else if (datum['label'] == "Axon Network Solution PVT LTD") {
+                        .datum(testData).call(chart);
+                } else if (datum['label'] == "Axon Network Solution PVT. LTD.") {
                     document.getElementById("experience").innerHTML = `
                     <table>
                     <tr>
@@ -376,7 +380,7 @@ $(function () {
                     <td style="border:none;"><i class="fa-solid fa-building"></i></td>
                         <td style="border:none;color:cyan;padding-left:10px;">Company </td>
                         <td style="border:none;">:</td>
-                        <td style="border:none;padding-left:10px;">Axon Network Solution PVT. LTD. </td>
+                        <td style="border:none;padding-left:10px;" id='exptable'>Axon Network Solution PVT. LTD.</td>
                     </tr>
                     <tr>
                     <td style="border:none;"><i class="fa-solid fa-award" style="font-size:10px;"></i></td>
@@ -398,7 +402,7 @@ $(function () {
                 <td style="border:none;"><i class="fa-solid fa-building"></i></td>
                     <td style="border:none;color:cyan;padding-left:10px;">Company</td>
                     <td style="border:none;">:</td>
-                    <td style="border:none;padding-left:10px;">IT Support Desk PVT. LTD. </td>
+                    <td style="border:none;padding-left:10px;" id='exptable'>IT Support Desk Limited</td>
                 </tr>
                 <tr>
                 <td style="border:none;"><i class="fa-solid fa-award" style="font-size:10px;"></i></td>
