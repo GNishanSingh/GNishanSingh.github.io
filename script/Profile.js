@@ -5,12 +5,25 @@ $(function () {
             if (document.getElementById('details')) {
                 document.getElementById('details').remove()
             }
-            this.echo(`
-            <div class="grid-container" id='details'>
-                <div class="grid-item" id='basicdetais'></div>
-                <div class="grid-item" id='skillset'><p style="color:cyan;font-size:14px;"><i class="fa-solid fa-kitchen-set"></i> Skill Set</p></div>
-            </div>
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                this.echo(`
+                <div class="grid-container" id='details'>
+                <div class="grid-item">
+                    <div class="grid-item" id='basicdetais'></div>
+                </div>
+                <div class="grid-item">
+                    <div class="grid-item" id='skillset'><p style="color:cyan;font-size:14px;"><i class="fa-solid fa-kitchen-set"></i> Skill Set</p></div>
+                </div>
+                </div>
             `, { raw: true })
+            } else {
+                this.echo(`
+                <div class="grid-container" id='details'>
+                    <div class="grid-item" id='basicdetais'></div>
+                    <div class="grid-item" id='skillset'><p style="color:cyan;font-size:14px;"><i class="fa-solid fa-kitchen-set"></i> Skill Set</p></div>
+                </div>
+                `, { raw: true })
+            }
             document.getElementById("basicdetais").innerHTML = `
             <table>
             <tr>
@@ -241,21 +254,32 @@ $(function () {
             if (document.getElementById('exp')) {
                 document.getElementById('exp').remove()
             }
-            this.echo(`
-<div class="grid-container" id='exp'>
-    <div class="grid-item">
-        <div class="grid-item">
-            <p><strong style="color:cyan;">Total Experience :</strong> 9 Years and 4 Month</p>
-        </div>
-        <div class="grid-item" id="timeline"></div>
-    </div>
-    <div class="grid-item">
-        <div class="grid-item" id="tooltip"></div>
-        <div class="grid-item" id="experience"></div>
-    </div>
-</div>
-            
-            `, { raw: true })
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                this.echo(`
+                <div class="grid-container" id='exp'>
+                    <div class="grid-item">
+                        <div class="grid-item">
+                            <p><strong style="color:cyan;">Total Experience :</strong> 9 Years and 4 Month</p>
+                        </div>
+                        <div class="grid-item" id="timeline"></div>
+                        <div class="grid-item" id="experience"></div>
+                    </div>
+                </div>`, { raw: true })
+
+            } else {
+                this.echo(`
+                <div class="grid-container" id='exp'>
+                    <div class="grid-item">
+                        <div class="grid-item">
+                            <p><strong style="color:cyan;">Total Experience :</strong> 9 Years and 4 Month</p>
+                        </div>
+                        <div class="grid-item" id="timeline"></div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-item" id="experience"></div>
+                    </div>
+                </div>`, { raw: true })
+            }
             var width = 700;
             var testData = [
                 {
@@ -369,7 +393,7 @@ $(function () {
                         tickSize: 4
                     })
                     chart.orient("bottom")
-                    chart.margin({ left: 150, right: 30, top: 0, bottom: 0 })
+                    chart.margin({ left: 130, right: 30, top: 0, bottom: 0 })
                     var svg = d3.select("#nettimeline").append("svg").attr("width", 400)
                         .datum(testData).call(chart);
                 } else if (datum['label'] == "Axon Network Solution PVT. LTD.") {
