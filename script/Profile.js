@@ -8,7 +8,7 @@ $(function () {
             this.echo(`
             <div class="grid-container" id='details'>
                 <div class="grid-item" id='basicdetais'></div>
-                <div class="grid-item" id='skillset'><p style="color:green;font-size:14px;">Skill Set</p></div>
+                <div class="grid-item" id='skillset'><p style="color:cyan;font-size:14px;"><i class="fa-solid fa-kitchen-set"></i> Skill Set</p></div>
             </div>
             `, { raw: true })
             document.getElementById("basicdetais").innerHTML = `
