@@ -77,31 +77,31 @@ $(function () {
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li><a href="https://mad-certified.mitre-engenuity.org/02aa55f6-287a-4299-8d47-6cd2c2c2bfae" target="_blank">ATT&CK Cyber Threat Intelligence Certification</a></li></td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://mad-certified.mitre-engenuity.org/02aa55f6-287a-4299-8d47-6cd2c2c2bfae" target="_blank">ATT&CK Cyber Threat Intelligence Certification</a></li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li><a href="https://mad-certified.mitre-engenuity.org/6245378c-8b5d-4888-9246-e0b1f801590d" target="_blank">ATT&CK Security Operations Center Assessment Certification</a></li></td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://mad-certified.mitre-engenuity.org/6245378c-8b5d-4888-9246-e0b1f801590d" target="_blank">ATT&CK Security Operations Center Assessment Certification</a></li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li><a href="https://securonixacademy.northpass.com/courses/fefba1a5-03d0-425e-a77c-c4b9f8f4e26a/certificate" target="_blank">Certified SNYPR Content Developer</a></li></td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://securonixacademy.northpass.com/courses/fefba1a5-03d0-425e-a77c-c4b9f8f4e26a/certificate" target="_blank">Certified SNYPR Content Developer</a></li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li><a href="https://securonixacademy.northpass.com/courses/51d09917-09e5-41ef-8bc1-97a24ff78f52/certificate" target="_blank">Certified SNYPR Data Integrator</a></li></td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://securonixacademy.northpass.com/courses/51d09917-09e5-41ef-8bc1-97a24ff78f52/certificate" target="_blank">Certified SNYPR Data Integrator</a></li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li><a href="https://securonixacademy.northpass.com/courses/dcd6cbc2-727b-47b0-b585-3ad3fffc2f74/certificate" target="_blank">Certified SNYPR Security Analyst</a></li></td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://securonixacademy.northpass.com/courses/dcd6cbc2-727b-47b0-b585-3ad3fffc2f74/certificate" target="_blank">Certified SNYPR Security Analyst</a></li></td>
             </tr>
             <tr>
                 <td style="border:none;"><i class="fa-solid fa-diagram-project"></i></td>
@@ -113,37 +113,44 @@ $(function () {
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li><a href="https://github.com/GNishanSingh/Optm_ParserEngine" target="_blank">Optimized Parser Engine</a></li></td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://github.com/GNishanSingh/Optm_ParserEngine" target="_blank">Optimized Parser Engine</a></li></td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li><a href="https://serverlessrepo.aws.amazon.com/applications/us-east-1/655631112574/ETS-AWS-Logforwarder" target="_blank">AWS Connector for SIEM</a></li</td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://serverlessrepo.aws.amazon.com/applications/us-east-1/655631112574/ETS-AWS-Logforwarder" target="_blank">AWS Connector for SIEM</a></li</td>
             </tr>
             <tr>
                <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li><a href="https://www.netsurion.com/knowledge-packs/microsoft-azure" target="_blank">Azure Connector for SIEM</a></li</td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://www.netsurion.com/knowledge-packs/microsoft-azure" target="_blank">Azure Connector for SIEM</a></li</td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li><a href="https://www.netsurion.com/capabilities/mitre-attack" target="_blank">MITRE ATT&CK Integration with EventTracker</a></li</td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://www.netsurion.com/capabilities/mitre-attack" target="_blank">MITRE ATT&CK Integration with EventTracker</a></li</td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li><a href="https://www.netsurion.com/eventtracker-support/software-updates/v9x/et93u21-056" target="_blank">Vulnerability Management Integration with EventTracker</a></li</td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://www.netsurion.com/eventtracker-support/software-updates/v9x/et93u21-056" target="_blank">Vulnerability Management Integration with EventTracker</a></li</td>
             </tr>
             <tr>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;padding-left:10px;"><li><a href="https://www.netsurion.com/environments/microsoft-365-security" target="_blank">Microsoft 365 Connector for SIEM</a></li</td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://www.netsurion.com/environments/microsoft-365-security" target="_blank">Microsoft 365 Connector for SIEM</a></li</td>
+            </tr>
+            <tr>
+            <td style="border:none;" colcount="4">
+            <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/34468138" width="50" height="60"></img>
+            <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/47566814" width="50" height="60"></img>
+            <img src="https://cdn.filestackcontent.com/security=policy:eyJ3Ijo0NTAsImgiOjYwLCJmaXQiOiJtYXgiLCJjYWxsIjpbInJlYWQiLCJjb252ZXJ0Iiwic3RvcmUiLCJwaWNrIiwicmVtb3ZlIl0sImV4cGlyeSI6MTY2NjQ5MjEzM30=,signature:8000347939feccd31539be406b43bf028b4af207fc11e57ec5a9db3f3d42a878/resize=width:100,height:60,fit:max/UitMg1agSH2VhybV4wy7" alt="Securonix Academy">
+            </td>
             </tr>
             </table>
             `;
