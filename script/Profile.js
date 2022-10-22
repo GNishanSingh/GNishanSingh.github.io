@@ -234,9 +234,6 @@ $(function () {
                 document.getElementById('exp').remove()
             }
             this.echo(`
-<audio id='clicksound'>
-    <source src="script/clicksound.wav" type="audio/wav">
-</audio>
 <div class="grid-container" id='exp'>
     <div class="grid-item">
         <div class="grid-item">
@@ -416,7 +413,16 @@ $(function () {
             var svg = d3.select("#timeline").append("svg").attr("width", width)
                 .datum(testData).call(chart);
         },
+        projects: function(){
+            document.getElementById("clicksound").play();
+            this.echo(`
+comming soon
+        `)},
+        clear: function(){
+            location.reload()
+        },
         help: function () {
+            document.getElementById("clicksound").play();
             this.echo(`
 Use following command for getting details about me:
 ---------------------------------------------------
@@ -430,26 +436,7 @@ Use following command for getting details about me:
             `)
         }
     }, {
-        greetings:
-            `
-  ▄▄ • ▄• ▄▌▄▄▄  • ▌ ▄ ·. ▄• ▄▌▄ •▄  ▄ .▄ ▐ ▄ ▪  .▄▄ ·  ▄ .▄ ▄▄▄·  ▐ ▄     .▄▄ · ▪   ▐ ▄  ▄▄ •  ▄ .▄
- ▐█ ▀ ▪█▪██▌▀▄ █··██ ▐███▪█▪██▌█▌▄▌▪██▪▐█•█▌▐███ ▐█ ▀. ██▪▐█▐█ ▀█ •█▌▐█    ▐█ ▀. ██ •█▌▐█▐█ ▀ ▪██▪▐█
- ▄█ ▀█▄█▌▐█▌▐▀▀▄ ▐█ ▌▐▌▐█·█▌▐█▌▐▀▀▄·██▀▐█▐█▐▐▌▐█·▄▀▀▀█▄██▀▐█▄█▀▀█ ▐█▐▐▌    ▄▀▀▀█▄▐█·▐█▐▐▌▄█ ▀█▄██▀▐█
- ▐█▄▪▐█▐█▄█▌▐█•█▌██ ██▌▐█▌▐█▄█▌▐█.█▌██▌▐▀██▐█▌▐█▌▐█▄▪▐███▌▐▀▐█ ▪▐▌██▐█▌    ▐█▄▪▐█▐█▌██▐█▌▐█▄▪▐███▌▐▀
- ·▀▀▀▀  ▀▀▀ .▀  ▀▀▀  █▪▀▀▀ ▀▀▀ ·▀  ▀▀▀▀ ·▀▀ █▪▀▀▀ ▀▀▀▀ ▀▀▀ · ▀  ▀ ▀▀ █▪     ▀▀▀▀ ▀▀▀▀▀ █▪·▀▀▀▀ ▀▀▀ ·
- [[!;;;;https://github.com/GNishanSingh]GitHub] | [[!;;;;https://twitter.com/g_nishan_singh]Twitter] | [[!;;;;https://www.linkedin.com/in/gurmukhnishan-singh/]LinkedIn]
- ---------------------------
-
-Use following command for getting details about me:
----------------------------------------------------
-| [[;#00FFFF;]Command]     |          [[;#00FFFF;]Description]               |
----------------------------------------------------
-| [[;#00FFFF;]whoami]      | To read something about me         |
-| [[;#00FFFF;]experience]  | To Read about my work experience   |
-| [[;#00FFFF;]projects]    | To Read about project i have done  |
-| [[;#00FFFF;]help]        | To get command helps               |
----------------------------------------------------
-`,
+        greetings: greetings.innerHTML,
         prompt: '[[;red;]g_nishan_singh] >'
     });
 });
