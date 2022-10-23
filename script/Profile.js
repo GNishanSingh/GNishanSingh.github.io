@@ -163,7 +163,6 @@ $(function () {
             <td style="border:none;" colcount="3">
             <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/34468138" width="50" height="60"></img>
             <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/47566814" width="50" height="60"></img>
-            <img src="https://cdn.filestackcontent.com/security=policy:eyJ3Ijo0NTAsImgiOjYwLCJmaXQiOiJtYXgiLCJjYWxsIjpbInJlYWQiLCJjb252ZXJ0Iiwic3RvcmUiLCJwaWNrIiwicmVtb3ZlIl0sImV4cGlyeSI6MTY2NjQ5MjEzM30=,signature:8000347939feccd31539be406b43bf028b4af207fc11e57ec5a9db3f3d42a878/resize=width:100,height:60,fit:max/UitMg1agSH2VhybV4wy7" alt="Securonix Academy">
             </td>
             </tr>
             </table>
