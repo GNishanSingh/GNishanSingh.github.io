@@ -336,6 +336,49 @@ $(function () {
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">Technical Lead (Detection Engineering)</td>
                     </tr>
+                    <tr>
+                        <td style="border:none;"><i class="fa-solid fa-list-check"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Roles</td>
+                        <td style="border:none;">:</td>
+                        <td style="border:none;padding-left:10px;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;"></td>
+                        <td style="border:none;"></td>
+                        <td style="border:none;"></td>
+                        <td style="border:none;padding-left:10px;height:150px;width:300px">
+                        <div style="overflow:scroll;height:100%;">
+                            <li>Team Management:
+                                <ul> 
+                                    <li>Managing Detection and automation team</li>
+                                    <li>Process improvement</li>
+                                    <li>Delegate work</li>
+                                    <li>Collaborating with team</li>
+                                    <li>Handling esclations</li>
+                                    <li>Create team goals</li>
+                                    <li>Hiring and training teams</li>
+                                </ul>
+                            </li>
+                            <li>Automation/Development: 
+                                <ul>
+                                    <li>Automating unit test</li>
+                                    <li>Detection as code</li>
+                                    <li>Automation scripts for daily repetitive work</li>
+                                    <li>ATS requirement</li>
+                                    <li>Content Portal</li>
+                                </ul>
+                            </li>
+                            <li>SIEM Content Development: 
+                                <ul>
+                                    <li>Development of Policy Violation</li>
+                                    <li>Analyzing malicious activity</li>
+                                    <li>Unit testing for SIEM content</li>
+                                    <li>Monitoring content on customer for reducing FP's and finding content issues</li>
+                                </ul>
+                            </li>
+                        </div>
+                        </td>
+                    </tr>
                     </table>
                             `
                 } else if (datum['label'] == "Netsurion Technologies PVT. LTD.") {
@@ -365,6 +408,71 @@ $(function () {
                         <td style="border:none;">:</td>
                         <td style="border:none;">
                             <div id="nettimeline"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;"><i class="fa-solid fa-list-check"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Roles</td>
+                        <td style="border:none;">:</td>
+                        <td style="border:none;padding-left:10px;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;"></td>
+                        <td style="border:none;"></td>
+                        <td style="border:none;"></td>
+                        <td style="border:none;height:150px;width:100px">
+                            <div style="overflow:scroll;height:100%;">
+                            <li>Security Intelligence Team Management:
+                                <ul>
+                                    <li><strong style="color:green;">Delegate work</strong>: Delegating work among team members to achive goals for continuious integration of products and developing SIEM Content.</li>
+                                    <li><strong style="color:green;">Process improvement</strong>: Developing and improving process for providing bug free integrators and better content for security</li>
+                                    <li><strong style="color:green;">Collaborating with team</strong>: Collaborating with other teams (like SOC Team, Product Enginering, Pre-sales, support) to get feedback and understand customer requirement.</li>
+                                    <li><strong style="color:green;">Handling esclations</strong>: Handling complex issues related to SIEM Content/Integration and helping customer to troubleshoot it.</li>
+                                    <li><strong style="color:green;">Create team goals</strong>: Reviewing team member work and guide/setting goals for them to imporove team member domain knowledge and reducing bugs.</li>
+                                    <li><strong style="color:green;">Hiring and training teams</strong>: Hiring new team members and training them, so that mutual goal will be achived.</li>
+                                </ul>
+                            </li>
+                            <li>Software Development: 
+                                <ul>
+                                    <li><strong style="color:green;">Integration with SIEM</strong>: There are many integration i have created for EventTracker to bring security telemetry. Following are few i have highlighted here:
+                                        <ul>
+                                            <li>
+                                                Project Name: Integration of M365 with SIEM (Netsurion EventTracker)<br>
+                                                Project Description: Integration of Microsoft 365 suite with SIEM for bringing Security telemetry like mail transfer, security/compliance alerts, sharepoint activity, teams activity and other M365 acitivities Suite software.<br>
+                                                Developing SIEM Content (Alerts, Dashboard, Reports, Machine Learning Rules)<br>
+                                                Project Role: Developer as well as support<br>
+                                                Project Page: <a href="https://www.netsurion.com/environments/microsoft-365-security">https://www.netsurion.com/environments/microsoft-365-security</a>
+                                            </li>
+                                            <li>
+                                            Project Name: Integration of MITRE ATT&CK with SIEM (Netsurion EventTracker)<br>
+                                            Project Description: Developing framework for detecting MITRE ATT&CK TTP's using security telemetry bringing from customer devices and visualization on SIEM (Netsurion EventTracker) to help SOC team to catch bad guys.<br>
+                                            Project Role: Initial POC to stakeholders, lead developer to bring POC to live<br>
+                                            Project Page: <a href="https://www.netsurion.com/capabilities/mitre-attack">https://www.netsurion.com/capabilities/mitre-attack</a>
+                                            </li>
+                                            <li>
+                                            Project Name: Integration of Cloud (AWS, AZURE) with SIEM (Netsurion EventTracker)<br>
+                                            Project Description: Integrating cloud (aws, azure) with SIEM for fetching security telemetry and developed SIEM content (alerts, reports, dashboard, ML rules) on it <br>
+                                            Project Role: Developer as well as support<br>
+                                            Project Page: <a href="https://www.netsurion.com/knowledge-packs">https://www.netsurion.com/knowledge-packs</a>
+                                            </li>
+                                        </ul>
+                                        In very similar way i have developed n no. of integration for SIEM like Vulnerablity Management Integration with SIEM, Landspeed Login detection and many more. 
+                                    </li>
+                                    <li><strong style="color:green;">Research</strong>: <br>
+                                        - Developed POC for interactive analytics for making SOC analytics life easier.<br>
+                                        - Developed Integration of SIEM with jupyter Notebook for automating analysis of alerts and signal for quick analysis and helping SOC team to reduce MTTR.<br>
+                                        - Help in developing POC for ML integration with SIEM for auto classification/tagging of logs<br>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>SIEM Content Development: 
+                                <ul>
+                                    <li>Handling customer requirement of content development for unsupported devices for detecting malicious activity on customer</li>
+                                    <li>Helping other teams with log parsing issues as well as developing on-demand content</li>
+                                    <li>Helping SOC Team to build content to detection high severity cyber attack.</li>
+                                </ul>
+                            </li>
+                            </div>
                         </td>
                     </tr>
                     </table>`
@@ -416,6 +524,23 @@ $(function () {
                         <td style="border:none;">:</td>
                         <td style="border:none;padding-left:10px;">System Engineer</td>
                     </tr>
+                    <tr>
+                        <td style="border:none;"><i class="fa-solid fa-list-check"></i></td>
+                        <td style="border:none;color:cyan;padding-left:10px;">Roles</td>
+                        <td style="border:none;">:</td>
+                        <td style="border:none;padding-left:10px;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;"></td>
+                        <td style="border:none;"></td>
+                        <td style="border:none;"></td>
+                        <td style="border:none;padding-left:10px;">
+                            <li>Configuring, maintaining and troubleshooting IT infrastructure servers (e.g DNS, AD, Mail server, FTP, Backup Servers)</li>
+                            <li>Configuring and maintaining network devices like router, switches and firewall</li>
+                            <li>Visting customer premises and help to troubleshoot issues related to IT applications (like outlook, backups and others)</li>
+                            <li>Setting up IT infrastructure for new customer from data center till client workstations</li>
+                        </td>
+                    </tr>
                     </table>`
                 } else {
                     document.getElementById("experience").innerHTML = `
@@ -437,6 +562,22 @@ $(function () {
                     <td style="border:none;color:cyan;padding-left:10px;">Last designation</td>
                     <td style="border:none;">:</td>
                     <td style="border:none;padding-left:10px;">Desktop Support Engineer</td>
+                </tr>
+                <tr>
+                    <td style="border:none;"><i class="fa-solid fa-list-check"></i></td>
+                    <td style="border:none;color:cyan;padding-left:10px;">Roles</td>
+                    <td style="border:none;">:</td>
+                    <td style="border:none;padding-left:10px;"></td>
+                </tr>
+                <tr>
+                    <td style="border:none;"></td>
+                    <td style="border:none;"></td>
+                    <td style="border:none;"></td>
+                    <td style="border:none;padding-left:10px;">
+                        <li>Troubleshooting customer issues related to desktop, servers and applications</li>
+                        <li>Configuring and maintaining servers (e.g. mail server, active directory, dns and other IT infrastructure servers.)</li>
+                        <li>Taking backup on daily/weekly basis of server and users workstations</li>
+                    </td>
                 </tr>
                 </table>`
                 }
