@@ -447,7 +447,7 @@ $(function () {
         projects: function(){
             document.getElementById("clicksound").play();
             this.echo(`
-comming soon
+Under Development
         `)},
         clear: function(){
             location.reload()
