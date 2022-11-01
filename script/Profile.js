@@ -10,8 +10,6 @@ $(function () {
                 <div class="grid-container" id='details'>
                 <div class="grid-item">
                     <div class="grid-item" id='basicdetais'></div>
-                </div>
-                <div class="grid-item">
                     <div class="grid-item" id='skillset'><p style="color:cyan;font-size:14px;"><i class="fa-solid fa-kitchen-set"></i> Skill Set</p></div>
                 </div>
                 </div>
