@@ -10,7 +10,7 @@ $(function () {
                 <div class="grid-container" id='details'>
                 <div class="grid-item">
                     <div class="grid-item" id='basicdetais'></div>
-                    <div class="grid-item" id='skillset'><p style="color:cyan;font-size:14px;"><i class="fa-solid fa-kitchen-set"></i> Skill Set</p></div>
+                    <div class="grid-item" id='skillset'><p style="color:cyan;font-size:8px;"><i class="fa-solid fa-kitchen-set"></i> Skill Set</p></div>
                 </div>
                 </div>
             `, { raw: true })
@@ -583,12 +583,145 @@ $(function () {
             var svg = d3.select("#timeline").append("svg").attr("width", width)
                 .datum(testData).call(chart);
         },
-        projects: function(){
+        projects: function () {
             document.getElementById("clicksound").play();
             this.echo(`
-Under Development
-        `)},
-        clear: function(){
+<table>
+        <tr>
+            <td style="border:none;color:cyan;">Project</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">MITRE ATT&CK Framework Integration with SIEM</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Language</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">PowerShell, c#, javascript, html, Microsoft SQL server, Elasticsearch</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Description</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">This project was related to creating framework for detecting TTP's using systems logs and representing it in visualization for making easier for a SOC analysts to understand and detection threats.
+            </td>
+        </tr>
+</table>
+<br><br>
+<table>
+        <tr>
+            <td style="border:none;color:cyan;">Project</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">Connector for SIEM</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Language</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">PowerShell, python</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Description</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">
+            </td>
+        </tr>
+        <tr>
+        <td style="border:none;color:cyan;"></td>
+        <td style="border:none;padding-left:10px;padding-right:10px;"></td>
+        <td style="border:none;">This project was related to creating connectors for SIEM tools. following are few technologies for which i have created:
+            <li>Microsoft 365 Suite</li>
+            <li>Amazon AWS</li>
+            <li>Microsoft Azure</li>
+            <li>Cisco Umbrella</li>
+            <li>Vulnerablity Management Tools</li>
+            <li>and many more</li>
+        </td>
+    </tr>
+</table>
+<br><br>
+<table>
+        <tr>
+            <td style="border:none;color:cyan;">Project</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">Integrating Jupyter Notebook with SIEM</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Language</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">python</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Description</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">This project integrated the Jupyter Notebook with SIEM tools. This tools helps analysts to run the investigation automatically for well known TTP's and alerts generated over SIEM.
+            </td>
+        </tr>
+</table>
+<br><br>
+<table>
+        <tr>
+            <td style="border:none;color:cyan;">Project</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">Remote Workforce Threat Detection</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Language</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">PowerShell</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Description</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;"></td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;"></td>
+            <td style="border:none;padding-left:10px;padding-right:10px;"></td>
+            <td style="border:none;">
+            During pandemic there was alot of attack started happen on employee who was working from home. To protect/detect from us attack, i have created feature for EventTracker call RWTD. This feature helped detecting following attacks:
+                <li>Geographically improbable access detected</li>
+                <li>Login activity from blacklisted location</li>
+                <li>Suspicious multiple login attempts from same IP address</li>
+            </td>
+        </tr>
+
+</table>
+<br><br>
+<table>
+        <tr>
+            <td style="border:none;color:cyan;">Project</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">Content Validation Framework</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Language</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">python</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Description</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">This project creating for doing unit test framework for Securonix SIEM content developers. It helps developer to find the mistake in content before commiting.</td>
+        </tr>
+</table>
+<br><br>
+<table>
+        <tr>
+            <td style="border:none;color:cyan;">Project</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">Autonomous Threat Sweep</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Language</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">python</td>
+        </tr>
+        <tr>
+            <td style="border:none;color:cyan;">Description</td>
+            <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
+            <td style="border:none;">Helped improving Securonix ATS solution via revamping the project and adding multiple components for improving query creation, searching and case creation.</td>
+        </tr>
+</table>
+        `, { raw: true })
+        },
+        clear: function () {
             location.reload()
         },
         help: function () {
