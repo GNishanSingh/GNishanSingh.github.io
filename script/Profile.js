@@ -346,7 +346,7 @@ $(function () {
                         <td style="border:none;"></td>
                         <td style="border:none;padding-left:10px;height:150px;width:300px">
                         <div style="overflow:scroll;height:100%;">
-                            <li>Team Management:
+                            <li><strong style="color:green;">Team Management</strong>:
                                 <ul> 
                                     <li>Managing Detection and automation team</li>
                                     <li>Process improvement</li>
@@ -357,7 +357,7 @@ $(function () {
                                     <li>Hiring and training teams</li>
                                 </ul>
                             </li>
-                            <li>Automation/Development: 
+                            <li><strong style="color:green;">Automation/Development</strong>: 
                                 <ul>
                                     <li>Automating unit test</li>
                                     <li>Detection as code</li>
@@ -366,7 +366,7 @@ $(function () {
                                     <li>Content Portal</li>
                                 </ul>
                             </li>
-                            <li>SIEM Content Development: 
+                            <li><strong style="color:green">SIEM Content Development</strong>: 
                                 <ul>
                                     <li>Development of Policy Violation</li>
                                     <li>Analyzing malicious activity</li>
