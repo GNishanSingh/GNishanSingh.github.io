@@ -16,13 +16,27 @@ $(function () {
             `, { raw: true })
             } else {
                 this.echo(`
-                <div class="grid-container" id='details'>
-                    <div class="grid-item" id='basicdetais'></div>
-                    <div class="grid-item" id='skillset'><p style="color:cyan;font-size:14px;"><i class="fa-solid fa-kitchen-set"></i> Skill Set</p></div>
+                <br>
+                <div class="container-fluid" style="width:100%" id="details">
+                    <div class="row">
+                    <div class="col" id='basicdetais'></div>
+                    <div class="col">
+                    <div class="card bg-dark">
+                    <div class="card-body">
+                    <p style="color:cyan;font-size:14px;"><i class="fa-solid fa-kitchen-set"></i> Skill Set</p>
+                    <div id="skillset" style="height: 320px; width:80%;"></div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
                 </div>
+                <br>
                 `, { raw: true })
             }
             document.getElementById("basicdetais").innerHTML = `
+            <div class="card bg-dark">
+            <div class="card-body">
             <table>
             <tr>
                 <td style="border:none;"><i class="fa-solid fa-user" style="font-size:10px;"></i></td> 
@@ -164,6 +178,7 @@ $(function () {
             </td>
             </tr>
             </table>
+            </div></div>
             `;
             am5.ready(function () {
                 var root = am5.Root.new("skillset");
@@ -265,15 +280,21 @@ $(function () {
 
             } else {
                 this.echo(`
-                <div class="grid-container" id='exp'>
-                    <div class="grid-item">
-                        <div class="grid-item">
+                <div class="container-fluid" id='exp'>
+                    <div class="row">
+                     <div class="col">
+                        <div>
                             <p><strong style="color:cyan;">Total Experience :</strong> 9 Years and 4 Month</p>
                         </div>
-                        <div class="grid-item" id="timeline"></div>
+                        <div class="card bg-dark">
+                        <div class="card-body">
+                        <div id="timeline"></div>
+                        </div></div>
+                     </div>
+                    <div class="col">
+                    <div id="experience">
                     </div>
-                    <div class="grid-item">
-                        <div class="grid-item" id="experience"></div>
+                    </div>
                     </div>
                 </div>`, { raw: true })
             }
@@ -315,6 +336,8 @@ $(function () {
                 document.getElementById("experience").innerHTML = ""
                 if (datum['label'] == "Securonix India PVT. LTD.") {
                     document.getElementById("experience").innerHTML = `
+                    <div class="card bg-dark">
+                    <div class="card-body">
                     <table>
                     <tr>
                         <td style="border:none;"><i class="fa-solid fa-timeline"></i></td>
@@ -351,7 +374,7 @@ $(function () {
                                     <li>Managing Detection and automation team</li>
                                     <li>Process improvement</li>
                                     <li>Delegate work</li>
-                                    <li>Collaborating with team</li>
+                                    <li>Collaborating with teams</li>
                                     <li>Handling esclations</li>
                                     <li>Create team goals</li>
                                     <li>Hiring and training teams</li>
@@ -378,9 +401,11 @@ $(function () {
                         </td>
                     </tr>
                     </table>
-                            `
+                    </div></div>`
                 } else if (datum['label'] == "Netsurion Technologies PVT. LTD.") {
                     document.getElementById("experience").innerHTML = `
+                    <div class="card bg-dark">
+                    <div class="card-body">
                     <table>
                     <tr>
                     <td style="border:none;"><i class="fa-solid fa-timeline"></i></td>
@@ -473,7 +498,9 @@ $(function () {
                             </div>
                         </td>
                     </tr>
-                    </table>`
+                    </table>
+                    </div></div>
+                    `
                     var width = 700;
                     var testData = [
                         {
@@ -503,6 +530,8 @@ $(function () {
                         .datum(testData).call(chart);
                 } else if (datum['label'] == "Axon Network Solution PVT. LTD.") {
                     document.getElementById("experience").innerHTML = `
+                    <div class="card bg-dark">
+                    <div class="card-body">
                     <table>
                     <tr>
                     <td style="border:none;"><i class="fa-solid fa-timeline"></i></td>
@@ -539,9 +568,13 @@ $(function () {
                             <li>Setting up IT infrastructure for new customer from data center till client workstations</li>
                         </td>
                     </tr>
-                    </table>`
+                    </table>
+                    </div></div>
+                    `
                 } else {
                     document.getElementById("experience").innerHTML = `
+                    <div class="card bg-dark">
+                    <div class="card-body">
                 <table>
                 <tr>
                 <td style="border:none;"><i class="fa-solid fa-timeline"></i></td>
@@ -577,7 +610,9 @@ $(function () {
                         <li>Taking backup on daily/weekly basis of server and users workstations</li>
                     </td>
                 </tr>
-                </table>`
+                </table>
+                </div></div>
+                `
                 }
             });
             var svg = d3.select("#timeline").append("svg").attr("width", width)
@@ -586,6 +621,8 @@ $(function () {
         projects: function () {
             document.getElementById("clicksound").play();
             this.echo(`
+            <div class="card bg-dark">
+            <div class="card-body">
 <table>
         <tr>
             <td style="border:none;color:cyan;">Project</td>
@@ -604,7 +641,10 @@ $(function () {
             </td>
         </tr>
 </table>
+</div></div>
 <br><br>
+<div class="card bg-dark">
+<div class="card-body">
 <table>
         <tr>
             <td style="border:none;color:cyan;">Project</td>
@@ -635,7 +675,10 @@ $(function () {
         </td>
     </tr>
 </table>
+</div></div>
 <br><br>
+<div class="card bg-dark">
+<div class="card-body">
 <table>
         <tr>
             <td style="border:none;color:cyan;">Project</td>
@@ -654,7 +697,10 @@ $(function () {
             </td>
         </tr>
 </table>
+</div></div>
 <br><br>
+<div class="card bg-dark">
+<div class="card-body">
 <table>
         <tr>
             <td style="border:none;color:cyan;">Project</td>
@@ -681,9 +727,11 @@ $(function () {
                 <li>Suspicious multiple login attempts from same IP address</li>
             </td>
         </tr>
-
 </table>
+</div></div>
 <br><br>
+<div class="card bg-dark">
+<div class="card-body">
 <table>
         <tr>
             <td style="border:none;color:cyan;">Project</td>
@@ -698,10 +746,15 @@ $(function () {
         <tr>
             <td style="border:none;color:cyan;">Description</td>
             <td style="border:none;padding-left:10px;padding-right:10px;">:</td>
-            <td style="border:none;">This project creating for doing unit test framework for Securonix SIEM content developers. It helps developer to find the mistake in content before commiting.</td>
+            <td style="border:none;">This project created for doing unit test framework for Securonix SIEM content developers. It helps developer to find the mistake in content before commiting.</td>
         </tr>
 </table>
-<br><br>
+</div></div>
+<br><br>`,{raw:true})
+setTimeout(3000);
+this.echo(`
+<div class="card bg-dark">
+<div class="card-body">
 <table>
         <tr>
             <td style="border:none;color:cyan;">Project</td>
@@ -719,6 +772,7 @@ $(function () {
             <td style="border:none;">Helped improving Securonix ATS solution via revamping the project and adding multiple components for improving query creation, searching and case creation.</td>
         </tr>
 </table>
+</div></div>
         `, { raw: true })
         },
         clear: function () {
