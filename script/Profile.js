@@ -621,7 +621,7 @@ $(function () {
         projects: function () {
             document.getElementById("clicksound").play();
             this.echo(`
-            <div class="card bg-dark">
+            <div class="card bg-dark"><div class="card-header">Mitre ATT&CK Integration with SIEM</div>
             <div class="card-body">
 <table>
         <tr>
@@ -643,7 +643,7 @@ $(function () {
 </table>
 </div></div>
 <br><br>
-<div class="card bg-dark">
+<div class="card bg-dark"><div class="card-header">SIEM Connector</div>
 <div class="card-body">
 <table>
         <tr>
@@ -677,7 +677,7 @@ $(function () {
 </table>
 </div></div>
 <br><br>
-<div class="card bg-dark">
+<div class="card bg-dark"><div class="card-header">EventTracker Jupyter</div>
 <div class="card-body">
 <table>
         <tr>
@@ -699,7 +699,7 @@ $(function () {
 </table>
 </div></div>
 <br><br>
-<div class="card bg-dark">
+<div class="card bg-dark"><div class="card-header">Remote Workforce Threat Detection</div>
 <div class="card-body">
 <table>
         <tr>
@@ -730,7 +730,7 @@ $(function () {
 </table>
 </div></div>
 <br><br>
-<div class="card bg-dark">
+<div class="card bg-dark"><div class="card-header">Content Validation Framework</div>
 <div class="card-body">
 <table>
         <tr>
@@ -750,10 +750,8 @@ $(function () {
         </tr>
 </table>
 </div></div>
-<br><br>`,{raw:true})
-setTimeout(3000);
-this.echo(`
-<div class="card bg-dark">
+<br><br>
+<div class="card bg-dark"><div class="card-header">Securonix ATS</div>
 <div class="card-body">
 <table>
         <tr>
