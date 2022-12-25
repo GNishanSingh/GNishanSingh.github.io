@@ -250,7 +250,8 @@ $(function () {
                     { category: 'Offensive Security', value: 2 },
                     { category: 'Visualisation', value: 6 },
                     { category: 'Team Management', value: 4 },
-                    { category: 'SIEM', value: 7 }
+                    { category: 'SIEM', value: 7 },
+                    { category: 'Exploit Development', value: 1 }
                 ];
 
                 xAxis.data.setAll(data);
