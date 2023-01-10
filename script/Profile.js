@@ -795,12 +795,12 @@ This site build with help of [[!;;;;https://terminal.jcubic.pl/#demo]Jquery Term
             this.echo(
                 `
 Following are my contact details:
-Email Id    : gurmukhnishansingh@gmail.com
-Phone No    : +916005122291
-LinkedIn    : https://www.linkedin.com/in/gurmukhnishan-singh/
-Twitter     : https://twitter.com/g_nishan_singh
-GitHub      : https://github.com/GNishanSingh
-Resume      : [[!;;;;/Technical Lead Detection Engineer.pdf]Click Here]
+[[;#00FFFF;]Email Id]   : gurmukhnishansingh@gmail.com
+[[;#00FFFF;]Phone No]   : +916005122291
+[[;#00FFFF;]LinkedIn]   : https://www.linkedin.com/in/gurmukhnishan-singh/
+[[;#00FFFF;]Twitter]    : https://twitter.com/g_nishan_singh
+[[;#00FFFF;]GitHub]     : https://github.com/GNishanSingh
+[[;#00FFFF;]Resume]     : [[!;;;;/Technical Lead Detection Engineer.pdf]Click Here]
                 `
             )
         }
