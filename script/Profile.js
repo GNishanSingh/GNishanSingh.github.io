@@ -60,7 +60,7 @@ $(function () {
                 <td style="border:none;"><i class="fa-solid fa-timeline"></i></td>
                 <td style="border:none;color:cyan;padding-left:10px;">Total Experience</td>
                 <td style="border:none;">:</td>
-                <td style="border:none;padding-left:10px;">9 years and 3 month</td>
+                <td style="border:none;padding-left:10px;">9 years and 8 month</td>
             </tr>
             <tr>
                 <td style="border:none;"><i class="fa-solid fa-building"></i></td>
@@ -175,6 +175,7 @@ $(function () {
             <td style="border:none;" colcount="3">
             <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/34468138" width="50" height="60"></img>
             <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/47566814" width="50" height="60"></img>
+            <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="gurmukhnishan-singh" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/gurmukhnishan-singh?trk=profile-badge">Gurmukhnishan Singh</a></div>
             </td>
             </tr>
             </table>
@@ -196,7 +197,7 @@ $(function () {
                 }));
 
                 var xRenderer = am5radar.AxisRendererCircular.new(root, {
-                    minGridDistance: 20
+                    minGridDistance: 30
                 });
 
                 xRenderer.grid.template.set("forceHidden", true);
@@ -272,7 +273,7 @@ $(function () {
                 <div class="grid-container" id='exp'>
                     <div class="grid-item">
                         <div class="grid-item">
-                            <p><strong style="color:cyan;">Total Experience :</strong> 9 Years and 4 Month</p>
+                            <p><strong style="color:cyan;">Total Experience :</strong> 9 Years and 8 Month</p>
                         </div>
                         <div class="grid-item" id="timeline"></div>
                         <div class="grid-item" id="experience"></div>
@@ -284,13 +285,10 @@ $(function () {
                 <div class="container-fluid" id='exp'>
                     <div class="row">
                      <div class="col">
-                        <div>
-                            <p><strong style="color:cyan;">Total Experience :</strong> 9 Years and 4 Month</p>
-                        </div>
+                        <div><p><strong style="color:cyan;">Total Experience :</strong> 9 Years and 8 Month</p></div>
                         <div class="card bg-dark">
                         <div class="card-body">
                         <div id="timeline"></div>
-                        </div></div>
                      </div>
                     <div class="col">
                     <div id="experience">
@@ -788,8 +786,22 @@ Use following command for getting details about me:
 | [[;#00FFFF;]experience] | To Read about my work experience  |
 | [[;#00FFFF;]projects]   | To Read about project i have done |
 | [[;#00FFFF;]help]       | To get command helps              |
+| [[;#00FFFF;]contact]    | To get contact details            |
 --------------------------------------------------
             `)
+        },
+        contact: function (){
+            this.echo(
+                `
+Following are my contact details:
+Email Id    : gurmukhnishansingh@gmail.com
+Phone No    : +916005122291
+LinkedIn    : https://www.linkedin.com/in/gurmukhnishan-singh/
+Twitter     : https://twitter.com/g_nishan_singh
+GitHub      : https://github.com/GNishanSingh
+Resume      : [[!;;;;/Technical Lead Detection Engineer.pdf]Click Here]
+                `
+            )
         }
     }, {
         greetings: greetings.innerHTML,
