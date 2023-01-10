@@ -792,6 +792,7 @@ This site build with help of [[!;;;;https://terminal.jcubic.pl/#demo]Jquery Term
             `)
         },
         contact: function (){
+            document.getElementById("clicksound").play();
             this.echo(
                 `
 Following are my contact details:
