@@ -788,6 +788,7 @@ Use following command for getting details about me:
 | [[;#00FFFF;]help]       | To get command helps              |
 | [[;#00FFFF;]contact]    | To get contact details            |
 --------------------------------------------------
+This site build with help of [[!;;;;https://terminal.jcubic.pl/#demo]Jquery Terminal Emulator] and hosted on [[!;;;;https://github.com/GNishanSingh/GNishanSingh.github.io]github pages]. I'm keep update this on regular basis, please check this site on regular basis for new updates.
             `)
         },
         contact: function (){
