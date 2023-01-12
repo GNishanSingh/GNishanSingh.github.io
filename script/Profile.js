@@ -284,18 +284,18 @@ $(function () {
                 this.echo(`
                 <div class="container-fluid" id='exp'>
                     <div class="row">
-                     <div class="col">
+                     <div class="grid-item">
                         <div><p><strong style="color:cyan;">Total Experience :</strong> 9 Years and 8 Month</p></div>
                         <div class="card bg-dark">
                         <div class="card-body">
                         <div id="timeline"></div>
-                     </div>
-                    <div class="col">
-                    <div id="experience">
+                        </div>
+                        </div>
                     </div>
+                    <div class="grid-item">
+                    <div id="experience"></div>
                     </div>
-                    </div>
-                </div>`, { raw: true })
+                </div></div>`, { raw: true })
             }
             var width = 700;
             var testData = [
