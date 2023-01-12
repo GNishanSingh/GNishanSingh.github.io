@@ -129,6 +129,24 @@ $(function () {
                 <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://securonixacademy.northpass.com/courses/dcd6cbc2-727b-47b0-b585-3ad3fffc2f74/certificate" target="_blank">Certified SNYPR Security Analyst</a></li></td>
             </tr>
             <tr>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://certificates.picussecurity.com/en/verify/46868653690491" target="_blank">Ransomware Attacks: Basics, TTPs, and Countermeasures</a></li></td>
+            </tr>
+            <tr>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://certificates.picussecurity.com/en/verify/80480967127751" target="_blank">Ransomware Detection in Early Phases of the Attack Lifecycle</a></li></td>
+            </tr>
+            <tr>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;"></td>
+                <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://certificates.picussecurity.com/en/verify/61763682583869" target="_blank">Ransomware Detection in Late Phases of the Attack Lifecycle</a></li></td>
+            </tr>
+            <tr>
                 <td style="border:none;"><i class="fa-solid fa-diagram-project"></i></td>
                 <td style="border:none;color:cyan;padding-left:10px;">Project</td>
                 <td style="border:none;">:</td>
@@ -171,11 +189,14 @@ $(function () {
                 <td style="border:none;padding-left:10px;"><li><a style="color:cyan;" href="https://www.netsurion.com/environments/microsoft-365-security" target="_blank">Microsoft 365 Connector for SIEM</a></li</td>
             </tr>
             <tr>
-            <td style="border:none;"></td>
-            <td style="border:none;" colcount="3">
+            <td style="border:none;" colcount="4">
+            <div class="box">
             <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/34468138" width="50" height="60"></img>
             <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/47566814" width="50" height="60"></img>
-            <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="gurmukhnishan-singh" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/gurmukhnishan-singh?trk=profile-badge">Gurmukhnishan Singh</a></div>
+            <img src="/icons/46868653690491.png" width="50" height="60"></img>
+            <img src="/icons/61763682583869.png" width="50" height="60"></img>
+            <img src="/icons/80480967127751.png" width="50" height="60"></img>
+            </div>
             </td>
             </tr>
             </table>
