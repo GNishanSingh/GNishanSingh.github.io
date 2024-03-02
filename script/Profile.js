@@ -822,7 +822,7 @@ Following are my contact details:
 [[;#00FFFF;]LinkedIn]   : https://www.linkedin.com/in/gurmukhnishan-singh/
 [[;#00FFFF;]Twitter]    : https://twitter.com/g_nishan_singh
 [[;#00FFFF;]GitHub]     : https://github.com/GNishanSingh
-[[;#00FFFF;]Resume]     : [[!;;;;/Technical Lead Detection Engineer.pdf]Click Here]
+[[;#00FFFF;]Resume]     : [[!;;;;/Gurmukhnishansingh_resume.pdf]Click Here]
                 `
             )
         }
