@@ -1,5 +1,23 @@
 const { useState, useRef } = React;
 
+// Auto-calculate experience from career start date
+const calculateExperience = (startDate) => {
+  const start = new Date(startDate);
+  const now = new Date();
+  let years = now.getFullYear() - start.getFullYear();
+  let months = now.getMonth() - start.getMonth();
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  return `${years} years ${months} months`;
+};
+
+const CAREER_START = "2013-06-01";
+const totalExperience = calculateExperience(CAREER_START);
+
 const commandList = [
   { cmd: "whoami", desc: "To read something about me" },
   { cmd: "experience", desc: "To read about my work experience" },
@@ -24,50 +42,58 @@ const radarData = [
   { label: "Leadership", value: 4 }
 ];
 
+// Key skills marked for highlighting
+const keySkills = [
+  "Detection Engineering",
+  "SOAR / XSOAR",
+  "SIEM",
+  "Python",
+  "Product Strategy",
+  "MITRE ATT&CK"
+];
+
 const resume = {
   name: "Gurmukh Nishan Singh",
   role: "Product Manager | SOC and IT Automation",
   location: "Bangalore",
-  availability: "Total experience: 11 years 4 months",
+  availability: `Total experience: ${totalExperience}`,
+  careerStart: CAREER_START,
   summary:
     "Result-oriented cybersecurity professional across infrastructure technologies, cybersecurity, and development. Skilled in PowerShell, Python, JavaScript, detection and data engineering, SOC automation, red teaming, and exploit development; hands-on with SOAR, UEBA, SIEM, sandboxing, MITRE ATT&CK, malware analysis, log monitoring, and correlation. Experienced in translating security requirements into techno-functional specs, compliance and risk assessment, and leading teams to shared goals.",
   highlights: [
     {
-      title: "Core strengths",
+      title: "Key Expertise",
       bullets: [
-        "Infrastructure technologies, cybersecurity, and development experience",
-        "SOAR, UEBA, SIEM, sandboxing, malware analysis, and log correlation",
-        "Compliance, risk assessment, and techno-functional solution design",
-        "Team leadership and cross-functional delivery"
+        "Detection Engineering & MITRE ATT&CK mapping",
+        "SOAR/XSOAR automation & playbook development",
+        "SIEM platforms (Splunk, Securonix, ELK, Sentinel)",
+        "Product strategy & roadmap ownership"
       ]
     },
     {
-      title: "Career growth path",
+      title: "Core Strengths",
       bullets: [
-        "Detection Engineering",
-        "Exploit Development",
-        "Automation / SOAR",
-        "Team Management",
-        "Red Teaming",
-        "Data Engineering",
-        "Scripting (Python/PowerShell)"
+        "SOC automation and incident response workflows",
+        "Threat intelligence integration & enrichment",
+        "Team leadership and cross-functional delivery",
+        "Data engineering & pipeline architecture"
       ]
     }
   ],
   skills: [
-    "Product Strategy",
-    "Detection Engineering",
-    "SOAR / XSOAR",
-    "SIEM (Splunk, Securonix, ELK)",
-    "MITRE ATT&CK",
-    "Python",
-    "PowerShell",
-    "JavaScript",
-    "Kafka",
-    "Kubernetes",
-    "Redis",
-    "PostgreSQL / Neo4j",
-    "AWS / Azure"
+    { name: "Detection Engineering", isKey: true },
+    { name: "SOAR / XSOAR", isKey: true },
+    { name: "SIEM (Splunk, Securonix, ELK)", isKey: true },
+    { name: "Product Strategy", isKey: true },
+    { name: "MITRE ATT&CK", isKey: true },
+    { name: "Python", isKey: true },
+    { name: "PowerShell", isKey: false },
+    { name: "JavaScript", isKey: false },
+    { name: "Kafka", isKey: false },
+    { name: "Kubernetes", isKey: false },
+    { name: "Redis", isKey: false },
+    { name: "PostgreSQL / Neo4j", isKey: false },
+    { name: "AWS / Azure", isKey: false }
   ],
   experience: [
     {
@@ -139,6 +165,12 @@ const resume = {
     }
   ],
   projects: [
+    {
+      name: "Igris",
+      description: "AI-powered workflow automation and orchestration platform.",
+      tags: ["AI", "Automation", "Workflow"],
+      link: "https://info.g-nishansingh.com/igris-flow"
+    },
     {
       name: "Secu-AI",
       description: "Open-source AI tools for SOC investigation and analyst productivity.",
@@ -342,19 +374,81 @@ function buildWhoamiLines() {
     lines.push("");
   });
 
-  lines.push("Skills:");
-  lines.push(resume.skills.join(", "));
+  const keySkillNames = resume.skills.filter(s => s.isKey).map(s => s.name);
+  const otherSkillNames = resume.skills.filter(s => !s.isKey).map(s => s.name);
+
+  lines.push("Key Skills:");
+  lines.push(keySkillNames.join(" | "));
+  lines.push("");
+  lines.push("Other Skills:");
+  lines.push(otherSkillNames.join(", "));
 
   return lines;
 }
 
+function SkillsDisplay() {
+  const keySkills = resume.skills.filter(s => s.isKey);
+  const otherSkills = resume.skills.filter(s => !s.isKey);
+
+  return (
+    <div className="skills-display">
+      <div className="skills-section">
+        <div className="skills-label">Key Skills</div>
+        <div className="skills-tags">
+          {keySkills.map((skill, index) => (
+            <span
+              key={skill.name}
+              className="skill-tag skill-key"
+              style={{ animationDelay: `${index * 0.08}s` }}
+            >
+              {skill.name}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="skills-section">
+        <div className="skills-label">Other Skills</div>
+        <div className="skills-tags">
+          {otherSkills.map((skill, index) => (
+            <span
+              key={skill.name}
+              className="skill-tag"
+              style={{ animationDelay: `${(keySkills.length + index) * 0.08}s` }}
+            >
+              {skill.name}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function WhoamiOutput() {
+  const bioLines = [
+    resume.name,
+    `${resume.role} // ${resume.location}`,
+    resume.availability,
+    "",
+    resume.summary,
+    ""
+  ];
+
+  resume.highlights.forEach((group) => {
+    bioLines.push(`${group.title}:`);
+    group.bullets.forEach((bullet) => bioLines.push(`- ${bullet}`));
+    bioLines.push("");
+  });
+
   return (
     <div className="whoami-layout">
-      <TextBlock lines={buildWhoamiLines()} />
+      <div className="whoami-bio">
+        <TextBlock lines={bioLines} />
+        <SkillsDisplay />
+      </div>
       <div className="whoami-chart">
         <div className="chart-title">Skill Radar</div>
-        <RadarChart data={radarData} />
+        <RadarChart data={radarData} key={Date.now()} />
       </div>
     </div>
   );
@@ -377,37 +471,98 @@ function buildExperienceLines() {
 function ExperienceOutput() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeRole = resume.experience[activeIndex];
+  const animKey = useRef(Date.now()).current;
+  const totalYears = totalExperience;
+
+  const formatIndex = (index) => {
+    return `EXP-${String(index + 1).padStart(3, '0')}`;
+  };
 
   return (
-    <div className="experience-shell">
-      <div className="timeline-scroll">
-        <div className="timeline-items">
-          {resume.experience.map((role, index) => (
-            <button
-              key={`${role.role}-${role.company}`}
-              type="button"
-              className={`timeline-node${index === activeIndex ? " is-active" : ""}`}
-              onClick={() => setActiveIndex(index)}
-            >
-              <span className="timeline-dot" aria-hidden="true"></span>
-              <span className="timeline-label">{role.period}</span>
-              <span className="timeline-role">
-                {role.role} | {role.company}
-              </span>
-            </button>
-          ))}
+    <div className="experience-container" key={animKey}>
+      <div className="experience-header">
+        <div className="experience-title">Career Intel</div>
+        <div className="experience-status">
+          <span className="experience-status-dot"></span>
+          {totalYears}
         </div>
       </div>
-      <div className="experience-details">
-        <div className="details-title">
-          {activeRole.role} | {activeRole.company}
+
+      <div className="experience-grid">
+        <div className="experience-timeline">
+          <div className="timeline-indicator">
+            <span className="timeline-label">Timeline</span>
+            <span className="timeline-count">{resume.experience.length} Missions</span>
+          </div>
+          <div className="experience-cards">
+            {resume.experience.map((role, index) => (
+              <button
+                key={`${role.role}-${role.company}`}
+                type="button"
+                className={`exp-card${index === activeIndex ? " is-active" : ""}`}
+                onClick={() => setActiveIndex(index)}
+                style={{ animationDelay: `${index * 0.12}s` }}
+              >
+                <div className="exp-card-header">
+                  <div className="exp-card-header-left">
+                    <span className="exp-index">{formatIndex(index)}</span>
+                    <span className="exp-status-indicator"></span>
+                  </div>
+                  <span className="exp-period">{role.period}</span>
+                </div>
+                <div className="exp-card-body">
+                  <div className="exp-role">{role.role}</div>
+                  <div className="exp-company">{role.company}</div>
+                </div>
+                <div className="exp-card-footer">
+                  <span className="exp-progress-bar">
+                    <span className="exp-progress-fill" style={{ width: `${((resume.experience.length - index) / resume.experience.length) * 100}%` }}></span>
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="details-period">{activeRole.period}</div>
-        <ul className="details-list">
-          {activeRole.bullets.map((bullet) => (
-            <li key={bullet}>{bullet}</li>
-          ))}
-        </ul>
+
+        <div className="experience-details" key={`details-${activeIndex}`}>
+          <div className="details-card">
+            <div className="details-card-header">
+              <span className="details-index">{formatIndex(activeIndex)}</span>
+              <span className="details-status">
+                <span className="details-status-dot"></span>
+                Active Record
+              </span>
+            </div>
+            <div className="details-card-body">
+              <div className="details-meta">
+                <div className="details-period">{activeRole.period}</div>
+              </div>
+              <div className="details-title">{activeRole.role}</div>
+              <div className="details-company">
+                <span className="company-icon">◆</span>
+                {activeRole.company}
+              </div>
+              <div className="details-section">
+                <div className="details-section-header">
+                  <span className="section-icon">▸</span>
+                  Key Operations
+                </div>
+                <ul className="details-list">
+                  {activeRole.bullets.map((bullet, idx) => (
+                    <li key={bullet} style={{ animationDelay: `${idx * 0.08}s` }}>
+                      <span className="bullet-marker">›</span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="details-card-footer">
+              <span>Record {activeIndex + 1} of {resume.experience.length}</span>
+              <span className="footer-timestamp">Verified</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -436,30 +591,52 @@ function buildProjectsLines() {
 }
 
 function ProjectsOutput() {
+  const animKey = useRef(Date.now()).current;
+
+  const formatIndex = (index) => {
+    return `PRJ-${String(index + 1).padStart(3, '0')}`;
+  };
+
   return (
-    <div className="projects-scroll">
-      <div className="projects-row">
-        {resume.projects.map((project) => (
-          <div key={project.name} className="project-card">
-            <div className="project-title">{project.name}</div>
-            <div className="project-desc">{project.description}</div>
-            {project.tags && project.tags.length ? (
-              <div className="project-tags">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="project-tag">
-                    {tag}
-                  </span>
-                ))}
+    <div className="projects-container" key={animKey}>
+      <div className="projects-header">
+        <div className="projects-title">Mission Archive</div>
+        <div className="projects-status">Systems Online</div>
+      </div>
+      <div className="projects-scroll">
+        <div className="projects-row">
+          {resume.projects.map((project, index) => (
+            <div
+              key={project.name}
+              className="project-card"
+              style={{ animationDelay: `${index * 0.12}s` }}
+            >
+              <div className="project-card-header">
+                <span className="project-index">{formatIndex(index)}</span>
+                <span className="project-status-indicator"></span>
               </div>
-            ) : null}
-            {project.note ? <div className="project-note">{project.note}</div> : null}
-            {project.link ? (
-              <a className="project-link" href={project.link} target="_blank" rel="noreferrer">
-                {project.link}
-              </a>
-            ) : null}
-          </div>
-        ))}
+              <div className="project-card-body">
+                <div className="project-title">{project.name}</div>
+                <div className="project-desc">{project.description}</div>
+                {project.tags && project.tags.length ? (
+                  <div className="project-tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="project-tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
+                {project.note ? <div className="project-note">{project.note}</div> : null}
+                {project.link ? (
+                  <a className="project-link" href={project.link} target="_blank" rel="noreferrer">
+                    Access Project
+                  </a>
+                ) : null}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -470,6 +647,17 @@ function buildContactLines() {
 }
 
 function ContactOutput() {
+  const getIcon = (label) => {
+    const l = label.toLowerCase();
+    if (l.includes("email")) return "✉";
+    if (l.includes("phone")) return "☎";
+    if (l.includes("linkedin")) return "in";
+    if (l.includes("github")) return "⌘";
+    if (l.includes("twitter")) return "𝕏";
+    if (l.includes("website")) return "◈";
+    return "►";
+  };
+
   const renderValue = (item) => {
     const label = item.label.toLowerCase();
     const value = item.value;
@@ -507,16 +695,32 @@ function ContactOutput() {
     return <span className="contact-value">{value}</span>;
   };
 
+  const animKey = useRef(Date.now()).current;
+  const now = new Date();
+  const timestamp = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')}`;
+
   return (
-    <div className="contact-card">
-      <div className="contact-title">Contact</div>
-      <div className="contact-list">
-        {resume.contact.map((item) => (
-          <div key={item.label} className="contact-row">
-            <span className="contact-label">{item.label}</span>
-            {renderValue(item)}
-          </div>
-        ))}
+    <div className="contact-container" key={animKey}>
+      <div className="contact-header">
+        <div className="contact-title">Secure Channel</div>
+        <div className="contact-secure">Encrypted</div>
+      </div>
+      <div className="contact-body">
+        <div className="contact-list">
+          {resume.contact.map((item, index) => (
+            <div key={item.label} className="contact-row" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div className="contact-label">
+                <span className="contact-icon">{getIcon(item.label)}</span>
+                {item.label}
+              </div>
+              {renderValue(item)}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="contact-footer">
+        <span>Channel Status: Active</span>
+        <span className="contact-timestamp">{timestamp}</span>
       </div>
     </div>
   );
