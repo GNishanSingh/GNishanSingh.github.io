@@ -104,7 +104,8 @@ const resume = {
         "Define vision, roadmap, and KPIs for SOC and IT automation products.",
         "Architect Quilr Agent Service with MCP tool attachments and LLM-driven workflows.",
         "Deliver Kafka ingestion pipelines, Redis caching, and microservices on Kubernetes.",
-        "Build connectors with SIEMs, threat intel APIs, EDR, IAM, and SaaS platforms."
+        "Build connectors with SIEMs, threat intel APIs, EDR, IAM, and SaaS platforms.",
+        "Research and develop AI-driven security solutions and AI Security frameworks for threat detection and response."
       ]
     },
     {
