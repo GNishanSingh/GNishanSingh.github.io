@@ -37,6 +37,7 @@ const radarData = [
   { label: "Detection", value: 5 },
   { label: "SOAR", value: 5 },
   { label: "SIEM", value: 5 },
+  { label: "AI Security", value: 4 },
   { label: "Automation", value: 4 },
   { label: "Data Eng", value: 4 },
   { label: "Leadership", value: 4 }
@@ -49,7 +50,8 @@ const keySkills = [
   "SIEM",
   "Python",
   "Product Strategy",
-  "MITRE ATT&CK"
+  "MITRE ATT&CK",
+  "AI / AI Security"
 ];
 
 const resume = {
@@ -87,6 +89,7 @@ const resume = {
     { name: "Product Strategy", isKey: true },
     { name: "MITRE ATT&CK", isKey: true },
     { name: "Python", isKey: true },
+    { name: "AI / AI Security", isKey: true },
     { name: "PowerShell", isKey: false },
     { name: "JavaScript", isKey: false },
     { name: "Kafka", isKey: false },
