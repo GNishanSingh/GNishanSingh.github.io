@@ -259,7 +259,7 @@ const promptLabel = "g_nishan_singh >";
 function Landing() {
   return (
     <div className="landing">
-      <div className="landing-title">Gurmukhnishan Singh</div>
+      <div className="landing-title" data-text="Gurmukhnishan Singh">Gurmukhnishan Singh</div>
       <div className="landing-links">
         {landingLinks.map((link, index) => (
           <React.Fragment key={link.label}>

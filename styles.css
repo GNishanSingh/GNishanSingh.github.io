@@ -50,6 +50,7 @@
   opacity: 0.4;
 }
 
+
 /* Cursor Trail */
 #cursor-trail {
   position: fixed;
@@ -326,16 +327,64 @@ body::after {
   font-family: "Press Start 2P", monospace;
   font-size: clamp(28px, 6vw, 52px);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   line-height: 1.2;
   color: var(--text);
-  text-shadow: 0 0 8px rgba(125, 249, 255, 0.15);
-  animation: title-pop 0.7s ease-out both;
   position: relative;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  animation: title-3d-intro 1.2s cubic-bezier(0.23, 1, 0.32, 1) both, title-glow-pulse 4s ease-in-out 1.2s infinite;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 2px 0 rgba(125, 249, 255, 0.1),
+    0 3px 0 rgba(125, 249, 255, 0.1),
+    0 4px 0 rgba(125, 249, 255, 0.08),
+    0 5px 0 rgba(125, 249, 255, 0.06),
+    0 6px 0 rgba(125, 249, 255, 0.04),
+    0 7px 0 rgba(125, 249, 255, 0.02),
+    0 8px 15px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(125, 249, 255, 0.3),
+    0 0 60px rgba(125, 249, 255, 0.2);
+}
+
+.landing-title::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  opacity: 0.5;
+  transform: translateZ(-10px) translateX(3px) translateY(3px);
+  filter: blur(2px);
+  z-index: -1;
+}
+
+.landing-title::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-2);
+  opacity: 0.3;
+  transform: translateZ(-20px) translateX(-2px) translateY(-2px);
+  filter: blur(3px);
+  z-index: -2;
+  animation: title-chromatic 3s ease-in-out infinite;
 }
 
 .landing-title:hover {
-  animation: title-pop 0.7s ease-out both, glitch 0.5s infinite;
+  animation: title-3d-intro 1.2s cubic-bezier(0.23, 1, 0.32, 1) both, title-float 3s ease-in-out infinite, glitch 0.3s infinite;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.2),
+    0 2px 0 rgba(125, 249, 255, 0.15),
+    0 3px 0 rgba(125, 249, 255, 0.15),
+    0 4px 0 rgba(125, 249, 255, 0.12),
+    0 5px 0 rgba(125, 249, 255, 0.1),
+    0 6px 0 rgba(125, 249, 255, 0.08),
+    0 7px 0 rgba(125, 249, 255, 0.05),
+    0 8px 20px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(125, 249, 255, 0.5),
+    0 0 100px rgba(125, 249, 255, 0.3);
 }
 
 .landing-links {
@@ -564,7 +613,7 @@ body::after {
 /* Experience Grid Layout */
 .experience-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   position: relative;
   z-index: 1;
@@ -604,8 +653,9 @@ body::after {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: 450px;
+  max-height: 500px;
   overflow-y: auto;
+  overflow-x: visible;
   padding-right: 8px;
   scrollbar-width: thin;
   scrollbar-color: rgba(125, 249, 255, 0.3) transparent;
@@ -630,15 +680,23 @@ body::after {
   background: linear-gradient(145deg, rgba(8, 12, 18, 0.95), rgba(15, 20, 28, 0.9));
   border: 1px solid rgba(125, 249, 255, 0.1);
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  margin: 0;
+  display: block;
   animation: card-materialize 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  overflow: hidden;
+  overflow: visible;
   cursor: pointer;
   font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
   text-align: left;
   width: 100%;
+  min-height: auto;
+  height: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  color: inherit;
 }
 
 /* Corner accent */
@@ -707,9 +765,7 @@ body::after {
 /* Card Body */
 .exp-card-body {
   padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  display: block;
 }
 
 .exp-period {
@@ -742,13 +798,12 @@ body::after {
   font-weight: 600;
   letter-spacing: 0.3px;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  display: block;
+  margin-bottom: 6px;
 }
 
 .exp-role::before {
-  content: "//";
+  content: "// ";
   color: var(--accent);
   font-weight: 400;
   opacity: 0.6;
@@ -758,13 +813,11 @@ body::after {
 .exp-company {
   color: var(--muted);
   font-size: 11px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  display: block;
 }
 
 .exp-company::before {
-  content: "◆";
+  content: "◆ ";
   font-size: 6px;
   color: var(--accent-2);
 }
@@ -2189,6 +2242,83 @@ body::after {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes title-3d-intro {
+  0% {
+    opacity: 0;
+    transform: rotateX(90deg) translateY(-50px) scale(0.5);
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: rotateX(-10deg) translateY(10px) scale(1.05);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg) translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes title-float {
+  0%, 100% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotateX(2deg) rotateY(-1deg);
+  }
+  50% {
+    transform: translateY(-8px) rotateX(0deg) rotateY(2deg);
+  }
+  75% {
+    transform: translateY(-3px) rotateX(-2deg) rotateY(-1deg);
+  }
+}
+
+@keyframes title-chromatic {
+  0%, 100% {
+    transform: translateZ(-20px) translateX(-2px) translateY(-2px);
+  }
+  33% {
+    transform: translateZ(-20px) translateX(3px) translateY(-1px);
+  }
+  66% {
+    transform: translateZ(-20px) translateX(-1px) translateY(2px);
+  }
+}
+
+@keyframes title-glow-pulse {
+  0%, 100% {
+    text-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.1),
+      0 2px 0 rgba(125, 249, 255, 0.1),
+      0 3px 0 rgba(125, 249, 255, 0.1),
+      0 4px 0 rgba(125, 249, 255, 0.08),
+      0 5px 0 rgba(125, 249, 255, 0.06),
+      0 6px 0 rgba(125, 249, 255, 0.04),
+      0 7px 0 rgba(125, 249, 255, 0.02),
+      0 8px 15px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(125, 249, 255, 0.3),
+      0 0 60px rgba(125, 249, 255, 0.2);
+    transform: translateY(0);
+  }
+  50% {
+    text-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.15),
+      0 2px 0 rgba(125, 249, 255, 0.15),
+      0 3px 0 rgba(125, 249, 255, 0.15),
+      0 4px 0 rgba(125, 249, 255, 0.12),
+      0 5px 0 rgba(125, 249, 255, 0.1),
+      0 6px 0 rgba(125, 249, 255, 0.08),
+      0 7px 0 rgba(125, 249, 255, 0.05),
+      0 10px 20px rgba(0, 0, 0, 0.6),
+      0 0 50px rgba(125, 249, 255, 0.5),
+      0 0 80px rgba(125, 249, 255, 0.3),
+      0 0 120px rgba(246, 196, 83, 0.15);
+    transform: translateY(-2px);
   }
 }
 
