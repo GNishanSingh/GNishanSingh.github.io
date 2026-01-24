@@ -14,6 +14,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Rise Hans Zimmer";
+  src: url("RiseHansZimmer-YqjBL.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg-0: #080b10;
   --bg-1: #0e141c;
@@ -319,57 +327,80 @@ body::after {
   padding: 26px 36px 8px;
   display: grid;
   gap: 10px;
+  justify-items: center;
+  text-align: center;
   animation: fade-in 0.6s ease-out both;
 }
 
 .landing-title {
-  font-family: "Press Start 2P", monospace;
-  font-size: clamp(28px, 6vw, 52px);
+  --name-notch: 16px;
+  font-family: "Rise Hans Zimmer", "Bebas Neue", "Space Mono", monospace;
+  font-size: clamp(44px, 7vw, 76px);
   text-transform: uppercase;
-  letter-spacing: 2px;
-  line-height: 1.2;
+  letter-spacing: 4px;
+  line-height: 1.05;
   color: var(--text);
   position: relative;
-  transform-style: preserve-3d;
-  perspective: 500px;
-  animation: title-3d-intro 1.2s cubic-bezier(0.23, 1, 0.32, 1) both;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  background:
+    linear-gradient(135deg, rgba(10, 15, 22, 0.95), rgba(12, 18, 28, 0.9)),
+    repeating-linear-gradient(-45deg, rgba(125, 249, 255, 0.04) 0 8px, transparent 8px 16px);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--name-notch)) 0,
+    100% var(--name-notch),
+    100% 100%,
+    var(--name-notch) 100%,
+    0 calc(100% - var(--name-notch))
+  );
+  -webkit-clip-path: polygon(
+    0 0,
+    calc(100% - var(--name-notch)) 0,
+    100% var(--name-notch),
+    100% 100%,
+    var(--name-notch) 100%,
+    0 calc(100% - var(--name-notch))
+  );
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  animation: fade-in 0.6s ease-out both;
+  isolation: isolate;
+  margin: 0 auto;
 }
 
 .landing-title::before {
-  content: attr(data-text);
+  content: "";
   position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent);
-  opacity: 0.25;
-  transform: translateZ(-10px) translateX(3px) translateY(3px);
-  filter: none;
-  z-index: -1;
+  left: -10px;
+  top: 10px;
+  bottom: 10px;
+  width: 6px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  clip-path: polygon(100% 0, 100% 100%, 0 80%, 0 20%);
+  opacity: 0.8;
 }
 
 .landing-title::after {
-  content: attr(data-text);
+  content: "";
   position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent-2);
-  opacity: 0.18;
-  transform: translateZ(-20px) translateX(-2px) translateY(-2px);
-  filter: none;
-  z-index: -2;
-  animation: title-chromatic 3s ease-in-out infinite;
+  inset: 6px;
+  pointer-events: none;
+  clip-path: inherit;
+  -webkit-clip-path: inherit;
 }
 
 .landing-title:hover {
-  animation: title-3d-intro 1.2s cubic-bezier(0.23, 1, 0.32, 1) both, title-float 3s ease-in-out infinite, glitch 0.3s infinite;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  animation: none;
+  border-color: rgba(125, 249, 255, 0.4);
 }
 
 .landing-links {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
   font-size: 12px;
 }
 
@@ -409,6 +440,7 @@ body::after {
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 10px;
+  justify-content: center;
   font-size: 12px;
 }
 
