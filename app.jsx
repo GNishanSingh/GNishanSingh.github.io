@@ -260,7 +260,7 @@ const resume = {
 
 const promptLabel = "g_nishan_singh >";
 
-function Landing() {
+function Landing({ showDetails = true, onCommand }) {
   return (
     <div className="landing">
       <div className="landing-title" data-text="Gurmukhnishan Singh">Gurmukhnishan Singh</div>
@@ -274,13 +274,24 @@ function Landing() {
           </React.Fragment>
         ))}
       </div>
-      <div className="landing-divider">---------------------------</div>
-      <div className="landing-intro">Use following command for getting details about me:</div>
-      <pre className="landing-table">{buildHelpLines().join("\n")}</pre>
-      <div className="landing-note">
-        This site is built with a React terminal UI. I keep it updated regularly, so
-        check back for new updates.
+      <div className="command-links">
+        {commandList.map((item) => (
+          <button
+            key={item.cmd}
+            type="button"
+            className="command-link"
+            onClick={() => onCommand && onCommand(item.cmd)}
+            aria-label={`Run ${item.cmd}`}
+          >
+            {item.cmd}
+          </button>
+        ))}
       </div>
+      {showDetails ? (
+        <>
+          <div className="landing-intro">Click a command above or type in the prompt to explore.</div>
+        </>
+      ) : null}
     </div>
   );
 }
@@ -753,19 +764,26 @@ function AllOutput() {
   );
 }
 
-function buildHelpLines() {
-  const col1 = Math.max(...commandList.map((item) => item.cmd.length), "Command".length);
-  const col2 = Math.max(...commandList.map((item) => item.desc.length), "Description".length);
-  const divider = "-".repeat(col1 + col2 + 7);
-  const row = (left, right) => `| ${left.padEnd(col1)} | ${right.padEnd(col2)} |`;
-
-  return [
-    divider,
-    row("Command", "Description"),
-    divider,
-    ...commandList.map((item) => row(item.cmd, item.desc)),
-    divider
-  ];
+function HelpOutput({ onCommand }) {
+  return (
+    <div className="help-commands">
+      <div className="help-message">Available commands</div>
+      <div className="command-links">
+        {commandList.map((item) => (
+          <button
+            key={item.cmd}
+            type="button"
+            className="command-link"
+            onClick={() => onCommand && onCommand(item.cmd)}
+            aria-label={`Run ${item.cmd}`}
+          >
+            {item.cmd}
+          </button>
+        ))}
+      </div>
+      <div className="help-note">Click a command to run it or type directly.</div>
+    </div>
+  );
 }
 
 function TerminalBar() {
@@ -782,6 +800,7 @@ function TerminalBar() {
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [history, setHistory] = useState([]);
+  const [showLanding, setShowLanding] = useState(true);
   const inputRef = useRef(null);
   const audioContextRef = useRef(null);
   const lastSoundRef = useRef(0);
@@ -891,6 +910,26 @@ function App() {
     osc.stop(startTime + 0.12);
   };
 
+  const runCommand = (cmd) => {
+    const trimmed = cmd.trim();
+    if (!trimmed) {
+      return;
+    }
+    const normalized = trimmed.toLowerCase();
+    if (normalized === "clear") {
+      setHistory([]);
+      setInputValue("");
+      setShowLanding(true);
+      focusInput();
+      return;
+    }
+    setHistory([trimmed]);
+    setInputValue("");
+    setShowLanding(false);
+    playOutputSound();
+    focusInput();
+  };
+
   const handleKeyDown = (event) => {
     const ignoredKeys = [
       "Shift",
@@ -916,21 +955,13 @@ function App() {
     if (!trimmed) {
       return;
     }
-    const normalized = trimmed.toLowerCase();
-    if (normalized === "clear") {
-      setHistory([]);
-      setInputValue("");
-      return;
-    }
-    setHistory([trimmed]);
-    setInputValue("");
-    playOutputSound();
+    runCommand(trimmed);
   };
 
   const renderOutput = (command) => {
     const normalized = command.toLowerCase().trim();
     if (normalized === "help") {
-      return <TextBlock lines={buildHelpLines()} />;
+      return <HelpOutput onCommand={runCommand} />;
     }
     if (normalized === "whoami") {
       return <WhoamiOutput />;
@@ -947,22 +978,14 @@ function App() {
     if (normalized === "all") {
       return <AllOutput />;
     }
-    return (
-      <TextBlock
-        lines={[
-          `Command not found: ${command}`,
-          "",
-          ...buildHelpLines()
-        ]}
-      />
-    );
+    return <HelpOutput onCommand={runCommand} />;
   };
 
   return (
     <div className="app">
       <div className="terminal-shell" onClick={focusInput}>
         <TerminalBar />
-        <Landing />
+        <Landing showDetails={showLanding && history.length === 0} onCommand={runCommand} />
         <div className="terminal-io">
           {history.map((entry, index) => (
             <div key={`${entry}-${index}`} className="terminal-entry">
@@ -980,6 +1003,9 @@ function App() {
               value={inputValue}
               onChange={(event) => {
                 setInputValue(event.target.value);
+                if (showLanding && event.target.value.length > 0) {
+                  setShowLanding(false);
+                }
                 captureSelection();
               }}
               onKeyDown={handleKeyDown}
