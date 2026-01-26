@@ -104,11 +104,12 @@ const resume = {
       company: "Quilr Security LLP",
       period: "Jan 2025 - Present",
       bullets: [
-        "Define vision, roadmap, and KPIs for SOC and IT automation products.",
-        "Architect Quilr Agent Service with MCP tool attachments and LLM-driven workflows.",
-        "Deliver Kafka ingestion pipelines, Redis caching, and microservices on Kubernetes.",
-        "Build connectors with SIEMs, threat intel APIs, EDR, IAM, and SaaS platforms.",
-        "Research and develop AI-driven security solutions and AI Security frameworks for threat detection and response."
+        "AI Security Platform & Agent Framework: Designed Quilr Agent Service to orchestrate autonomous agents for AI-security findings, coaching, and guided remediation; defined lifecycle, permissions, tool invocation, and auditability for governed execution.",
+        "Security Data Fabric & Ingestion Platform: Aggregated IdP, security tooling, endpoint/SaaS/AI telemetry with scalable pipelines, normalization layers, and entity correlation for real-time and historical analysis.",
+        "AI & SaaS Risk Prevention Rule Engine: Built policy/rule authoring to detect and prevent data leakage, weak or missing MFA, credential exposure, and misconfigurations with severity scoring and enforcement hooks across AI apps, browsers, and SaaS.",
+        "AI Red Teaming Framework: Created automated attack simulations for home-grown, open-source, and third-party models aligned with OWASP LLM Top 10 and MITRE ATLAS to generate findings and risk heatmaps.",
+        "Malicious Prompt Classification Models: Trained ML/LLM classifiers for prompt injection, jailbreak, exfiltration, and policy bypass patterns; integrated inference into real-time detection pipelines for AI-app protection.",
+        "Obfuscation Detection Framework: Detected encoding-based evasion, token splitting, Unicode abuse, semantic masking, and multi-stage prompt obfuscation through heuristic, statistical, and model-based techniques to reduce false negatives."
       ]
     },
     {
