@@ -264,7 +264,7 @@ const promptLabel = "g_nishan_singh >";
 function Landing({ showDetails = true, onCommand }) {
   return (
     <div className="landing">
-      <div className="landing-title" data-text="Gurmukhnishan Singh">Gurmukhnishan Singh</div>
+      <h1 className="landing-title" data-text="Gurmukhnishan Singh">Gurmukhnishan Singh</h1>
       <div className="landing-links">
         {landingLinks.map((link, index) => (
           <React.Fragment key={link.label}>
@@ -336,7 +336,7 @@ function RadarChart({ data, size = 230, levels = 4, max = 5 }) {
     .join(" ");
 
   return (
-    <svg className="radar-chart" viewBox={`0 0 ${viewSize} ${viewSize}`} role="img">
+    <svg className="radar-chart" viewBox={`0 0 ${viewSize} ${viewSize}`} role="img" aria-label="Skill radar chart showing expertise levels in Detection, SOAR, SIEM, AI Security, Automation, Data Engineering, and Leadership">
       <g className="radar-grid">
         {gridPolygons.map((points, index) => (
           <polygon key={`grid-${index}`} points={points} />
@@ -409,7 +409,7 @@ function SkillsDisplay() {
   return (
     <div className="skills-display">
       <div className="skills-section">
-        <div className="skills-label">Key Skills</div>
+        <h2 className="skills-label">Key Skills</h2>
         <div className="skills-tags">
           {keySkills.map((skill, index) => (
             <span
@@ -423,7 +423,7 @@ function SkillsDisplay() {
         </div>
       </div>
       <div className="skills-section">
-        <div className="skills-label">Other Skills</div>
+        <h2 className="skills-label">Other Skills</h2>
         <div className="skills-tags">
           {otherSkills.map((skill, index) => (
             <span
@@ -463,7 +463,7 @@ function WhoamiOutput() {
         <SkillsDisplay />
       </div>
       <div className="whoami-chart">
-        <div className="chart-title">Skill Radar</div>
+        <h2 className="chart-title">Skill Radar</h2>
         <RadarChart data={radarData} key={Date.now()} />
       </div>
     </div>
@@ -497,7 +497,7 @@ function ExperienceOutput() {
   return (
     <div className="experience-container" key={animKey}>
       <div className="experience-header">
-        <div className="experience-title">Career Intel</div>
+        <h2 className="experience-title">Career Intel</h2>
         <div className="experience-status">
           <span className="experience-status-dot"></span>
           {totalYears}
@@ -553,7 +553,7 @@ function ExperienceOutput() {
               <div className="details-meta">
                 <div className="details-period">{activeRole.period}</div>
               </div>
-              <div className="details-title">{activeRole.role}</div>
+              <h3 className="details-title">{activeRole.role}</h3>
               <div className="details-company">
                 <span className="company-icon">◆</span>
                 {activeRole.company}
@@ -616,7 +616,7 @@ function ProjectsOutput() {
   return (
     <div className="projects-container" key={animKey}>
       <div className="projects-header">
-        <div className="projects-title">Mission Archive</div>
+        <h2 className="projects-title">Mission Archive</h2>
         <div className="projects-status">Systems Online</div>
       </div>
       <div className="projects-scroll">
@@ -632,7 +632,7 @@ function ProjectsOutput() {
                 <span className="project-status-indicator"></span>
               </div>
               <div className="project-card-body">
-                <div className="project-title">{project.name}</div>
+                <h3 className="project-title">{project.name}</h3>
                 <div className="project-desc">{project.description}</div>
                 {project.tags && project.tags.length ? (
                   <div className="project-tags">
@@ -718,7 +718,7 @@ function ContactOutput() {
   return (
     <div className="contact-container" key={animKey}>
       <div className="contact-header">
-        <div className="contact-title">Secure Channel</div>
+        <h2 className="contact-title">Secure Channel</h2>
         <div className="contact-secure">Encrypted</div>
       </div>
       <div className="contact-body">
@@ -746,19 +746,19 @@ function AllOutput() {
   return (
     <div className="all-output">
       <section className="all-section">
-        <div className="all-title">Whoami</div>
+        <h2 className="all-title">Whoami</h2>
         <WhoamiOutput />
       </section>
       <section className="all-section">
-        <div className="all-title">Experience</div>
+        <h2 className="all-title">Experience</h2>
         <ExperienceOutput />
       </section>
       <section className="all-section">
-        <div className="all-title">Projects</div>
+        <h2 className="all-title">Projects</h2>
         <ProjectsOutput />
       </section>
       <section className="all-section">
-        <div className="all-title">Contact</div>
+        <h2 className="all-title">Contact</h2>
         <ContactOutput />
       </section>
     </div>
