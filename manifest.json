@@ -1,0 +1,26 @@
+{
+  "name": "Gurmukh Nishan Singh | Security Engineer",
+  "short_name": "GS Portfolio",
+  "description": "Security Engineer with expertise in Detection Engineering, SOAR, SIEM, AI Security, and Automation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e14",
+  "theme_color": "#0a0e14",
+  "icons": [
+    {
+      "src": "/icons/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
