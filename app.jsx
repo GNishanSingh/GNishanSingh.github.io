@@ -819,7 +819,10 @@ function App() {
     };
   };
 
+  const isMobileDevice = () => window.innerWidth < 768 || ('ontouchstart' in window);
+
   const focusInput = () => {
+    if (isMobileDevice()) return;
     const input = inputRef.current;
     if (!input) {
       return;
@@ -1012,7 +1015,7 @@ function App() {
               onKeyDown={handleKeyDown}
               onKeyUp={captureSelection}
               onClick={captureSelection}
-              autoFocus
+              autoFocus={!(window.innerWidth < 768 || ('ontouchstart' in window))}
               ref={inputRef}
               spellCheck="false"
             />
