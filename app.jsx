@@ -1,4 +1,4 @@
-const { useState, useRef } = React;
+const { useState, useRef, useEffect } = React;
 
 // Auto-calculate experience from career start date
 const calculateExperience = (startDate) => {
@@ -26,6 +26,91 @@ const commandList = [
   { cmd: "help", desc: "To get command helps" },
   { cmd: "contact", desc: "To get contact details" }
 ];
+
+// Extra commands: shown in `help`, used for Tab autocomplete, not on the landing buttons
+const extraCommands = [
+  { cmd: "neofetch", desc: "System info, operator edition" },
+  { cmd: "hunt", desc: "Run a live threat hunt simulation" },
+  { cmd: "resume", desc: "Download my resume (PDF)" },
+  { cmd: "theme", desc: "Switch theme: cyan | matrix | amber | redteam" },
+  { cmd: "history", desc: "Show commands you have run" },
+  { cmd: "ls", desc: "List files" },
+  { cmd: "date", desc: "Print the current date" },
+  { cmd: "clear", desc: "Clear the terminal" }
+];
+
+const hiddenCommands = ["sudo", "cat", "echo", "exit", "rm", "hack", "matrix"];
+
+const allCommandNames = [
+  ...commandList.map((c) => c.cmd),
+  ...extraCommands.map((c) => c.cmd),
+  ...hiddenCommands
+];
+
+const roleTaglines = [
+  "Detection Engineer",
+  "SOAR Architect",
+  "AI Security Builder",
+  "Threat Hunter",
+  "Product Manager // SecOps"
+];
+
+const THEMES = { cyan: 0, matrix: -63, amber: -150, redteam: 160 };
+
+const readStore = (store, key) => {
+  try {
+    return window[store].getItem(key);
+  } catch (error) {
+    return null;
+  }
+};
+
+const writeStore = (store, key, value) => {
+  try {
+    window[store].setItem(key, value);
+  } catch (error) {
+    /* storage unavailable */
+  }
+};
+
+const applyTheme = (name) => {
+  const deg = THEMES[name] ?? 0;
+  document.documentElement.style.filter = deg ? `hue-rotate(${deg}deg)` : "";
+  document.documentElement.dataset.theme = name;
+};
+
+const prefersReducedMotion = () =>
+  window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Levenshtein distance for "did you mean" suggestions
+const editDistance = (a, b) => {
+  const dp = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) dp[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)
+      );
+    }
+  }
+  return dp[a.length][b.length];
+};
+
+const suggestCommand = (input) => {
+  const visible = [...commandList, ...extraCommands].map((c) => c.cmd);
+  let best = null;
+  let bestScore = Infinity;
+  visible.forEach((cmd) => {
+    const score = editDistance(input, cmd);
+    if (score < bestScore) {
+      bestScore = score;
+      best = cmd;
+    }
+  });
+  return bestScore <= 3 ? best : null;
+};
 
 const landingLinks = [
   { label: "GitHub", url: "https://github.com/GNishanSingh" },
@@ -261,10 +346,71 @@ const resume = {
 
 const promptLabel = "g_nishan_singh >";
 
+function Typewriter({ words, typeSpeed = 70, deleteSpeed = 35, pause = 1600 }) {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [text, setText] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const word = words[wordIndex % words.length];
+    let delay = deleting ? deleteSpeed : typeSpeed;
+    if (!deleting && text === word) delay = pause;
+    const timer = setTimeout(() => {
+      if (!deleting && text === word) {
+        setDeleting(true);
+      } else if (deleting && text === "") {
+        setDeleting(false);
+        setWordIndex((i) => i + 1);
+      } else {
+        setText(deleting ? word.slice(0, text.length - 1) : word.slice(0, text.length + 1));
+      }
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [text, deleting, wordIndex]);
+
+  return (
+    <span className="typewriter" aria-label={words.join(", ")}>
+      <span aria-hidden="true">{text}</span>
+      <span className="typewriter-caret" aria-hidden="true"></span>
+    </span>
+  );
+}
+
+function StatusStrip() {
+  const [now, setNow] = useState(new Date());
+  const loadedAt = useRef(Date.now()).current;
+
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const session = Math.floor((now.getTime() - loadedAt) / 1000);
+  const mm = String(Math.floor(session / 60)).padStart(2, "0");
+  const ss = String(session % 60).padStart(2, "0");
+  const ist = now.toLocaleTimeString("en-GB", { timeZone: "Asia/Kolkata", hour12: false });
+
+  return (
+    <div className="status-strip" aria-label="Live status">
+      <span className="status-item">
+        <span className="status-dot status-dot-ok"></span>SOC: ONLINE
+      </span>
+      <span className="status-item">THREAT LEVEL: <b className="status-low">LOW</b></span>
+      <span className="status-item">BLR {ist} IST</span>
+      <span className="status-item">SESSION {mm}:{ss}</span>
+      <span className="status-item">XP {totalExperience.replace(" years ", "y ").replace(" months", "m")}</span>
+    </div>
+  );
+}
+
 function Landing({ showDetails = true, onCommand }) {
   return (
     <div className="landing">
       <h1 className="landing-title" data-text="Gurmukhnishan Singh">Gurmukhnishan Singh</h1>
+      <div className="landing-tagline">
+        <span className="tagline-prefix">&gt;_</span>
+        <Typewriter words={roleTaglines} />
+      </div>
       <div className="landing-links">
         {landingLinks.map((link, index) => (
           <React.Fragment key={link.label}>
@@ -291,6 +437,16 @@ function Landing({ showDetails = true, onCommand }) {
       {showDetails ? (
         <>
           <div className="landing-intro">Click a command above or type in the prompt to explore.</div>
+          <div className="landing-tips">
+            <span><kbd>Tab</kbd> autocomplete</span>
+            <span><kbd>↑</kbd><kbd>↓</kbd> history</span>
+            <span>
+              try{" "}
+              <button type="button" className="inline-cmd" onClick={() => onCommand && onCommand("neofetch")}>neofetch</button>
+              {" "}or{" "}
+              <button type="button" className="inline-cmd" onClick={() => onCommand && onCommand("hunt")}>hunt</button>
+            </span>
+          </div>
         </>
       ) : null}
     </div>
@@ -766,23 +922,228 @@ function AllOutput() {
 }
 
 function HelpOutput({ onCommand }) {
+  const row = (item) => (
+    <div key={item.cmd} className="help-row">
+      <button
+        type="button"
+        className="command-link"
+        onClick={() => onCommand && onCommand(item.cmd)}
+        aria-label={`Run ${item.cmd}`}
+      >
+        {item.cmd}
+      </button>
+      <span className="help-desc">{item.desc}</span>
+    </div>
+  );
   return (
     <div className="help-commands">
       <div className="help-message">Available commands</div>
-      <div className="command-links">
-        {commandList.map((item) => (
-          <button
-            key={item.cmd}
-            type="button"
-            className="command-link"
-            onClick={() => onCommand && onCommand(item.cmd)}
-            aria-label={`Run ${item.cmd}`}
-          >
-            {item.cmd}
-          </button>
+      <div className="help-grid">{commandList.map(row)}</div>
+      <div className="help-message help-sub">Extras</div>
+      <div className="help-grid">{extraCommands.map(row)}</div>
+      <div className="help-note">Click a command or type it. Tab autocompletes, ↑/↓ recalls history. Some commands are hidden.</div>
+    </div>
+  );
+}
+
+const neofetchArt = [
+  "   ▄██████▄   ",
+  "  ██▀    ▀██  ",
+  " ██  ▄██▄  ██ ",
+  " ██  ████  ██ ",
+  " ██  ▀██▀  ██ ",
+  "  ██▄    ▄██  ",
+  "   ▀██▄▄██▀   ",
+  "     ▀██▀     "
+];
+
+function NeofetchOutput() {
+  const info = [
+    ["OS", "SecOps Linux x86_64"],
+    ["Host", resume.name],
+    ["Role", resume.role],
+    ["Location", resume.location],
+    ["Uptime", totalExperience],
+    ["Shell", "detection-sh 5.0"],
+    ["SIEM", "Splunk, Sentinel, Securonix, ELK"],
+    ["SOAR", "XSOAR, custom playbooks"],
+    ["Frameworks", "MITRE ATT&CK, ATLAS, OWASP LLM Top 10"],
+    ["Languages", "Python, PowerShell, JavaScript"],
+    ["Packages", `${resume.projects.length} projects, ${resume.experience.length} roles`]
+  ];
+  return (
+    <div className="neofetch">
+      <pre className="neofetch-art" aria-hidden="true">{neofetchArt.join("\n")}</pre>
+      <div className="neofetch-info">
+        <div className="neofetch-head">
+          <span className="nf-accent">g_nishan_singh</span>@<span className="nf-accent">soc</span>
+        </div>
+        <div className="neofetch-rule">{"-".repeat(22)}</div>
+        {info.map(([k, v]) => (
+          <div key={k} className="neofetch-row">
+            <span className="nf-key">{k}</span>: {v}
+          </div>
         ))}
+        <div className="neofetch-swatches" aria-hidden="true">
+          {["#ff6b6b", "#f6c453", "#7df9ff", "#5af78e", "#c792ea", "#e4f0ff", "#8fa4bd", "#3b4b5e"].map((c) => (
+            <span key={c} style={{ background: c }}></span>
+          ))}
+        </div>
       </div>
-      <div className="help-note">Click a command to run it or type directly.</div>
+    </div>
+  );
+}
+
+const huntScript = [
+  { t: "info", text: "Initializing hunt engine ............................. ok" },
+  { t: "info", text: "Loading detection content (Sigma + custom KQL/SPL) ..... 1,284 rules" },
+  { t: "info", text: "Streaming telemetry: EDR, IdP, DNS, proxy .............. 2.31M events" },
+  { t: "info", text: "Correlating against MITRE ATT&CK ........................" },
+  { t: "hit", text: "T1110.003  Password Spraying      14 accounts / 1 source IP" },
+  { t: "hit", text: "T1558.003  Kerberoasting          RC4 TGS burst from WS-0231" },
+  { t: "hit", text: "T1003.001  LSASS Memory Access    procdump.exe -> lsass.exe" },
+  { t: "warn", text: "Risk score 92/100 - escalating to SOAR" },
+  { t: "ok", text: "Playbook 'contain-host' executed: WS-0231 isolated, creds rotated" },
+  { t: "ok", text: "Ticket INC-4471 enriched with threat intel and closed as true positive" },
+  { t: "done", text: "Mean time to contain: 00:00:47. Want this for your SOC? Run `contact`." }
+];
+
+function HuntOutput() {
+  const [step, setStep] = useState(prefersReducedMotion() ? huntScript.length : 0);
+  useEffect(() => {
+    if (step >= huntScript.length) return undefined;
+    const timer = setTimeout(() => setStep((s) => s + 1), step === 3 ? 900 : 420);
+    return () => clearTimeout(timer);
+  }, [step]);
+  const pct = Math.round((step / huntScript.length) * 100);
+  const tag = { info: "[*]", hit: "[!]", warn: "[~]", ok: "[+]", done: "[✓]" };
+  return (
+    <div className="hunt">
+      <div className="hunt-bar" aria-label={`Hunt progress ${pct}%`}>
+        <span className="hunt-bar-fill" style={{ width: `${pct}%` }}></span>
+        <span className="hunt-bar-label">HUNT {pct}%</span>
+      </div>
+      <div className="hunt-log">
+        {huntScript.slice(0, step).map((line, i) => (
+          <div key={i} className={`hunt-line hunt-${line.t}`}>
+            <span className="hunt-tag">{tag[line.t]}</span> {line.text}
+          </div>
+        ))}
+        {step < huntScript.length ? <span className="hunt-cursor">▋</span> : null}
+      </div>
+    </div>
+  );
+}
+
+function NotFoundOutput({ command, onCommand }) {
+  const name = command.split(/\s+/)[0];
+  const suggestion = suggestCommand(name.toLowerCase());
+  return (
+    <div className="notfound">
+      <div><span className="nf-err">command not found:</span> {name}</div>
+      {suggestion ? (
+        <div>
+          did you mean{" "}
+          <button type="button" className="inline-cmd" onClick={() => onCommand(suggestion)}>{suggestion}</button>?
+        </div>
+      ) : null}
+      <div className="help-note">
+        Type <button type="button" className="inline-cmd" onClick={() => onCommand("help")}>help</button> to see what I can do.
+      </div>
+    </div>
+  );
+}
+
+function ResumeOutput() {
+  useEffect(() => {
+    const a = document.createElement("a");
+    a.href = "Gurmukhnishansingh_resume.pdf";
+    a.download = "Gurmukhnishansingh_resume.pdf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }, []);
+  return (
+    <TextBlockWithLink
+      lines={["[+] Fetching resume.pdf ... done", "[+] Download started."]}
+      link={{ href: "Gurmukhnishansingh_resume.pdf", label: "Didn't start? Open the PDF" }}
+    />
+  );
+}
+
+function TextBlockWithLink({ lines, link }) {
+  return (
+    <div>
+      <TextBlock lines={lines} />
+      <a className="contact-link" href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+    </div>
+  );
+}
+
+const fakeFiles = {
+  "whoami.txt": "whoami",
+  "experience.log": "experience",
+  "projects.md": "projects",
+  "contact.vcf": "contact",
+  "resume.pdf": "resume"
+};
+
+function BootSequence({ onDone }) {
+  const lines = [
+    "GNS-BIOS v13.5  (c) 2013-" + new Date().getFullYear() + " Gurmukh Nishan Singh",
+    "Memory check ..................... 13 yrs of experience OK",
+    "Mounting /detections ............. OK",
+    "Loading SIEM connectors (50+) .... OK",
+    "Starting SOAR playbook engine .... OK",
+    "Arming AI-security guardrails .... OK",
+    "Establishing secure channel ...... OK",
+    "",
+    "ACCESS GRANTED"
+  ];
+  const [count, setCount] = useState(0);
+  const [leaving, setLeaving] = useState(false);
+  const doneRef = useRef(false);
+
+  const finish = () => {
+    if (doneRef.current) return;
+    doneRef.current = true;
+    setLeaving(true);
+    setTimeout(onDone, 350);
+  };
+
+  useEffect(() => {
+    if (count >= lines.length) {
+      const timer = setTimeout(finish, 650);
+      return () => clearTimeout(timer);
+    }
+    const timer = setTimeout(() => setCount((c) => c + 1), count === 0 ? 250 : 170);
+    return () => clearTimeout(timer);
+  }, [count]);
+
+  useEffect(() => {
+    const skip = (event) => {
+      if (event.type === "keydown") event.preventDefault();
+      finish();
+    };
+    window.addEventListener("keydown", skip);
+    window.addEventListener("pointerdown", skip);
+    return () => {
+      window.removeEventListener("keydown", skip);
+      window.removeEventListener("pointerdown", skip);
+    };
+  }, []);
+
+  return (
+    <div className={`boot${leaving ? " boot-leave" : ""}`} role="status" aria-live="polite">
+      <pre className="boot-log">
+        {lines.slice(0, count).map((line, i) => (
+          <div key={i} className={line === "ACCESS GRANTED" ? "boot-granted" : line.endsWith("OK") ? "boot-ok" : ""}>
+            {line || " "}
+          </div>
+        ))}
+        <span className="hunt-cursor">▋</span>
+      </pre>
+      <div className="boot-skip">press any key to skip</div>
     </div>
   );
 }
@@ -802,6 +1163,12 @@ function App() {
   const [inputValue, setInputValue] = useState("");
   const [history, setHistory] = useState([]);
   const [showLanding, setShowLanding] = useState(true);
+  const [cmdHistory, setCmdHistory] = useState([]);
+  const [histIndex, setHistIndex] = useState(-1);
+  const [runId, setRunId] = useState(0);
+  const [booting, setBooting] = useState(
+    () => !prefersReducedMotion() && readStore("sessionStorage", "gns-booted") !== "1"
+  );
   const inputRef = useRef(null);
   const audioContextRef = useRef(null);
   const lastSoundRef = useRef(0);
@@ -817,6 +1184,17 @@ function App() {
       start: input.selectionStart,
       end: input.selectionEnd
     };
+  };
+
+  useEffect(() => {
+    const saved = readStore("localStorage", "gns-theme");
+    if (saved && saved in THEMES) applyTheme(saved);
+  }, []);
+
+  const finishBoot = () => {
+    writeStore("sessionStorage", "gns-booted", "1");
+    setBooting(false);
+    setTimeout(focusInput, 0);
   };
 
   const isMobileDevice = () => window.innerWidth < 768 || ('ontouchstart' in window);
@@ -920,6 +1298,8 @@ function App() {
       return;
     }
     const normalized = trimmed.toLowerCase();
+    setCmdHistory((prev) => (prev[prev.length - 1] === trimmed ? prev : [...prev, trimmed]));
+    setHistIndex(-1);
     if (normalized === "clear") {
       setHistory([]);
       setInputValue("");
@@ -928,6 +1308,7 @@ function App() {
       return;
     }
     setHistory([trimmed]);
+    setRunId((id) => id + 1);
     setInputValue("");
     setShowLanding(false);
     playOutputSound();
@@ -952,6 +1333,31 @@ function App() {
       playKeySound();
     }
 
+    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+      if (!cmdHistory.length) return;
+      event.preventDefault();
+      let next;
+      if (event.key === "ArrowUp") {
+        next = histIndex === -1 ? cmdHistory.length - 1 : Math.max(0, histIndex - 1);
+      } else {
+        next = histIndex === -1 ? -1 : histIndex + 1;
+        if (next >= cmdHistory.length) next = -1;
+      }
+      setHistIndex(next);
+      setInputValue(next === -1 ? "" : cmdHistory[next]);
+      return;
+    }
+
+    if (event.key === "Tab" || (event.key === "ArrowRight" && ghost)) {
+      if (ghost) {
+        event.preventDefault();
+        setInputValue(inputValue + ghost);
+      } else if (event.key === "Tab") {
+        event.preventDefault();
+      }
+      return;
+    }
+
     if (event.key !== "Enter") {
       return;
     }
@@ -962,37 +1368,112 @@ function App() {
     runCommand(trimmed);
   };
 
+  const typed = inputValue.toLowerCase();
+  const completion =
+    typed && !typed.includes(" ")
+      ? [...commandList, ...extraCommands].map((c) => c.cmd).find((c) => c.startsWith(typed) && c !== typed)
+      : null;
+  const ghost = completion ? completion.slice(typed.length) : "";
+
   const renderOutput = (command) => {
-    const normalized = command.toLowerCase().trim();
-    if (normalized === "help") {
-      return <HelpOutput onCommand={runCommand} />;
+    const [rawName, ...args] = command.trim().split(/\s+/);
+    const normalized = rawName.toLowerCase();
+    const arg = args.join(" ");
+    switch (normalized) {
+      case "help":
+      case "?":
+        return <HelpOutput onCommand={runCommand} />;
+      case "whoami":
+        return <WhoamiOutput />;
+      case "experience":
+        return <ExperienceOutput />;
+      case "projects":
+        return <ProjectsOutput />;
+      case "contact":
+        return <ContactOutput />;
+      case "all":
+        return <AllOutput />;
+      case "neofetch":
+        return <NeofetchOutput />;
+      case "hunt":
+      case "hack":
+        return <HuntOutput />;
+      case "resume":
+        return <ResumeOutput />;
+      case "history":
+        return (
+          <TextBlock
+            lines={cmdHistory.length ? cmdHistory.map((c, i) => `${String(i + 1).padStart(4, " ")}  ${c}`) : ["(empty)"]}
+          />
+        );
+      case "date":
+        return <TextBlock lines={[new Date().toString()]} />;
+      case "ls":
+        return <TextBlock lines={[Object.keys(fakeFiles).join("    ")]} />;
+      case "cat": {
+        const target = fakeFiles[arg];
+        if (target) return renderOutput(target);
+        return <TextBlock lines={[arg ? `cat: ${arg}: No such file or directory` : "usage: cat <file>   (try `ls`)"]} />;
+      }
+      case "echo":
+        return <TextBlock lines={[arg]} />;
+      case "theme": {
+        const name = arg.toLowerCase();
+        if (name in THEMES) {
+          applyTheme(name);
+          writeStore("localStorage", "gns-theme", name);
+          return <TextBlock lines={[`[+] Theme switched to '${name}'.`]} />;
+        }
+        const current = document.documentElement.dataset.theme || "cyan";
+        return (
+          <div className="help-commands">
+            <div className="help-message">Themes (current: {current})</div>
+            <div className="command-links" style={{ justifyContent: "flex-start" }}>
+              {Object.keys(THEMES).map((t) => (
+                <button key={t} type="button" className="command-link" onClick={() => runCommand(`theme ${t}`)}>
+                  {t}
+                </button>
+              ))}
+            </div>
+          </div>
+        );
+      }
+      case "matrix": {
+        const canvas = document.getElementById("matrix-canvas");
+        const boosted = canvas && canvas.classList.toggle("matrix-boost");
+        return <TextBlock lines={[boosted ? "Wake up, Neo... (run `matrix` again to calm down)" : "Back to normal."]} />;
+      }
+      case "sudo": {
+        const ticket = 1000 + Math.floor(Math.random() * 9000);
+        return (
+          <TextBlock
+            lines={[
+              `[sudo] password for visitor: ********`,
+              `visitor is not in the sudoers file. This incident will be reported.`,
+              `[SOAR] INC-${ticket} auto-created, enriched and triaged as: curious recruiter (benign).`
+            ]}
+          />
+        );
+      }
+      case "rm":
+        return <TextBlock lines={["rm: permission denied. Nice try, detection rule DR-0042 just fired."]} />;
+      case "exit":
+        return <TextBlock lines={["There is no exit. Only `contact`."]} />;
+      default:
+        return <NotFoundOutput command={command} onCommand={runCommand} />;
     }
-    if (normalized === "whoami") {
-      return <WhoamiOutput />;
-    }
-    if (normalized === "experience") {
-      return <ExperienceOutput />;
-    }
-    if (normalized === "projects") {
-      return <ProjectsOutput />;
-    }
-    if (normalized === "contact") {
-      return <ContactOutput />;
-    }
-    if (normalized === "all") {
-      return <AllOutput />;
-    }
-    return <HelpOutput onCommand={runCommand} />;
   };
 
   return (
     <div className="app">
+      {booting ? <BootSequence onDone={finishBoot} /> : null}
       <div className="terminal-shell" onClick={focusInput}>
         <TerminalBar />
+        <StatusStrip />
         <Landing showDetails={showLanding && history.length === 0} onCommand={runCommand} />
         <div className="terminal-io">
           {history.map((entry, index) => (
-            <div key={`${entry}-${index}`} className="terminal-entry">
+            <div key={`${entry}-${index}-${runId}`} className="terminal-entry">
               <div className="prompt-line">
                 <span className="prompt-sign">{promptLabel}</span>
                 <span className="prompt-text">{entry}</span>
@@ -1002,11 +1483,22 @@ function App() {
           ))}
           <div className="prompt-line">
             <span className="prompt-sign">{promptLabel}</span>
+            <div className="prompt-input-wrap">
+            {ghost ? (
+              <span className="prompt-ghost" aria-hidden="true">
+                <span className="prompt-ghost-typed">{inputValue}</span>
+                {ghost}
+              </span>
+            ) : null}
             <input
               className="prompt-input"
+              aria-label="Terminal command"
+              autoComplete="off"
+              autoCapitalize="off"
               value={inputValue}
               onChange={(event) => {
                 setInputValue(event.target.value);
+                setHistIndex(-1);
                 if (showLanding && event.target.value.length > 0) {
                   setShowLanding(false);
                 }
@@ -1019,6 +1511,7 @@ function App() {
               ref={inputRef}
               spellCheck="false"
             />
+            </div>
           </div>
         </div>
       </div>

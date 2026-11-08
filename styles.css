@@ -3069,3 +3069,388 @@ body::after {
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
+
+/* ========== BOOT SEQUENCE ========== */
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #05080c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 clamp(16px, 8vw, 120px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.boot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(125, 249, 255, 0.03) 0 1px, transparent 1px 3px);
+}
+
+.boot-leave {
+  opacity: 0;
+  transform: scale(1.02);
+}
+
+.boot-log {
+  margin: 0;
+  font-family: inherit;
+  font-size: clamp(11px, 1.6vw, 14px);
+  line-height: 1.8;
+  color: var(--muted);
+  white-space: pre-wrap;
+}
+
+.boot-ok {
+  color: var(--accent);
+}
+
+.boot-granted {
+  color: var(--accent-2);
+  font-size: 1.6em;
+  letter-spacing: 6px;
+  text-shadow: 0 0 18px rgba(246, 196, 83, 0.6);
+  animation: fade-up 0.3s ease-out both;
+}
+
+.boot-skip {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.6;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ========== HERO: TAGLINE + STATUS STRIP ========== */
+.landing-tagline {
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--accent-2);
+  letter-spacing: 1px;
+  min-height: 1.6em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tagline-prefix {
+  color: var(--danger);
+}
+
+.typewriter {
+  display: inline-flex;
+  align-items: center;
+  text-shadow: 0 0 12px rgba(246, 196, 83, 0.35);
+}
+
+.typewriter-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: 3px;
+  background: var(--accent-2);
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+
+.status-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  justify-content: center;
+  padding: 6px 16px;
+  font-size: 10.5px;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  background: rgba(125, 249, 255, 0.03);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.status-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.status-dot-ok {
+  background: #5af78e;
+  box-shadow: 0 0 8px #5af78e;
+  animation: status-pulse 1.8s ease-in-out infinite;
+}
+
+.status-low {
+  color: #5af78e;
+  font-weight: 700;
+}
+
+@keyframes status-pulse {
+  50% { opacity: 0.35; }
+}
+
+.landing-tips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 22px;
+  font-size: 11px;
+  color: var(--muted);
+  animation: fade-up 0.5s ease-out 0.5s both;
+}
+
+kbd {
+  font-family: inherit;
+  font-size: 10px;
+  padding: 1px 6px;
+  margin-right: 4px;
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  color: var(--text);
+}
+
+.inline-cmd {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+
+.inline-cmd:hover {
+  color: var(--accent-2);
+}
+
+/* ========== PROMPT GHOST AUTOCOMPLETE ========== */
+.prompt-input-wrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+}
+
+.prompt-ghost {
+  position: absolute;
+  left: 7px; /* input border (1px) + padding (6px) */
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  white-space: pre;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  color: var(--muted);
+  opacity: 0.45;
+}
+
+.prompt-ghost-typed {
+  visibility: hidden;
+}
+
+/* ========== HELP ========== */
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 6px 24px;
+}
+
+.help-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.help-row .command-link {
+  min-width: 96px;
+  text-align: left;
+}
+
+.help-desc {
+  color: var(--muted);
+}
+
+.help-sub {
+  margin-top: 8px;
+  color: var(--accent-2);
+}
+
+/* ========== NEOFETCH ========== */
+.neofetch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  align-items: flex-start;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.neofetch-art {
+  margin: 0;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.15;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 10px rgba(125, 249, 255, 0.35));
+}
+
+.neofetch-head {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.nf-accent,
+.nf-key {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.neofetch-rule {
+  color: var(--muted);
+}
+
+.neofetch-row {
+  color: var(--text);
+}
+
+.neofetch-swatches {
+  display: flex;
+  margin-top: 10px;
+}
+
+.neofetch-swatches span {
+  width: 22px;
+  height: 14px;
+}
+
+/* ========== HUNT ========== */
+.hunt {
+  display: grid;
+  gap: 10px;
+  max-width: 820px;
+  font-size: 12px;
+}
+
+.hunt-bar {
+  position: relative;
+  height: 18px;
+  border: 1px solid var(--line);
+  background: rgba(125, 249, 255, 0.04);
+  overflow: hidden;
+}
+
+.hunt-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, rgba(125, 249, 255, 0.25), rgba(246, 196, 83, 0.45));
+  transition: width 0.35s ease;
+}
+
+.hunt-bar-label {
+  position: relative;
+  padding-left: 8px;
+  font-size: 10px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+
+.hunt-log {
+  display: grid;
+  gap: 3px;
+  white-space: pre-wrap;
+}
+
+.hunt-line {
+  animation: fade-up 0.25s ease-out both;
+  color: var(--muted);
+}
+
+.hunt-tag { font-weight: 700; }
+.hunt-info .hunt-tag { color: var(--accent); }
+.hunt-hit { color: var(--text); }
+.hunt-hit .hunt-tag { color: var(--danger); }
+.hunt-warn { color: var(--accent-2); }
+.hunt-ok .hunt-tag { color: #5af78e; }
+.hunt-done {
+  margin-top: 6px;
+  color: #5af78e;
+  font-weight: 700;
+}
+
+.hunt-cursor {
+  color: var(--accent);
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+/* ========== NOT FOUND ========== */
+.notfound {
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.nf-err {
+  color: var(--danger);
+}
+
+/* ========== MATRIX BOOST ========== */
+#matrix-canvas {
+  transition: opacity 0.6s ease;
+}
+
+#matrix-canvas.matrix-boost {
+  opacity: 1;
+  z-index: 5;
+  mix-blend-mode: screen;
+}
+
+html {
+  transition: filter 0.5s ease;
+}
+
+@media (max-width: 720px) {
+  .status-strip {
+    font-size: 9.5px;
+    gap: 4px 14px;
+  }
+
+  .landing-tips {
+    display: none;
+  }
+
+  .help-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .neofetch-art {
+    font-size: 11px;
+  }
+
+  .hunt {
+    font-size: 10.5px;
+  }
+}
